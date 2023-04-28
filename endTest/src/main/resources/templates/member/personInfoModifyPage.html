@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="서로에게 이득이 되는 아르바이트 구직정보 사이트 단디 알바"
+    />
+    <meta name="keywords" content="dandi" />
+    <meta name="author" content="4팀" />
+    <title>단디알바</title>
+    <link
+      rel="stylesheet"
+      href="../../static/fragmentCommon/common/common.css"
+      th:href="@{/fragmentCommon/common/common.css}"
+    />
+    <link
+      rel="stylesheet"
+      href="./personChangeLayout.css"
+      th:href="@{/modifyPerson/personChangeLayout.css}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <script
+      src="https://kit.fontawesome.com/72dc3cd256.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div
+        th:replace="~{/fragment/mainHeadLoginAfter :: mainHeaderAfter}"
+      ></div>
+      <div
+        th:replace="~{/fragment/mainNavigationLoginAfter :: mainNavigationAfter}"
+      ></div>
+      <!-- 메인: insert content -->
+      <main id="main">
+        <header id="mainHeader">
+          <ul class="main__headerMenu">
+            <li><button class="main__menu1">회원정보수정</button></li>
+            <li><button class="main__menu2 active">비밀번호변경</button></li>
+            <li><button class="main__menu3 active">회원탈퇴</button></li>
+          </ul>
+        </header>
+        <div id="mainContent">
+          <form action="" th:method="post" th:object="${update}">
+            <ul class="mainContentMenu1">
+              <div>
+                <input
+                  type="text"
+                  th:field="*{personIdPk}"
+                  disabled
+                  style="display: none"
+                />
+              </div>
+              <li class="area2">
+                <label for="myName">
+                  <br />
+                  <p style="display: inline">
+                    &ensp;&ensp;&ensp;이
+                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;름&ensp;&ensp;&ensp;
+                  </p>
+                </label>
+              </li>
+              <input
+                type="text"
+                id="myName"
+                th:field="*{namePerson}"
+                readonly
+              />
+              <li class="area3">
+                <label for="email">
+                  <br />
+                  <p style="display: inline">
+                    &ensp;이&emsp;&ensp;&ensp;메&ensp;&emsp;&ensp;일&ensp;&ensp;
+                  </p>
+                </label>
+              </li>
+              <input
+                type="email"
+                maxlength="30"
+                id="email"
+                th:field="*{emailPerson}"
+                placeholder="&ensp;이메일을 입력하세요."
+              />
+              <div id="email_down">
+                올바른 이메일을 입력하세요.(-과 공백없이 영어 숫자 조합
+                10~30자리)
+              </div>
+              <li class="area4">
+                <label for="phone">
+                  <br />
+                  <p style="display: inline">
+                    &ensp; 휴&ensp;대&ensp;폰&ensp;번&ensp;호 &ensp;
+                  </p>
+                </label>
+              </li>
+              <input
+                type="tel"
+                maxlength="11"
+                id="phone"
+                th:field="*{phonePerson}"
+                placeholder="&ensp;휴대폰번호를 -없이 입력하세요."
+              /><br />
+              <div id="phone_down">
+                올바른 전화번호를 입력하세요.(-과 공백없이 11자리 숫자)
+              </div>
+              <li class="area5">
+                <label for="address">
+                  <br />
+                  <p style="display: inline">
+                    &ensp;&ensp;&ensp;주&ensp;&ensp;&ensp;&ensp;&ensp;
+                    소&ensp;&ensp;&ensp;&ensp;
+                  </p>
+                </label>
+              </li>
+              <li class="area5">
+                <input
+                  type="text"
+                  style="display: inline"
+                  id="sample6_postcode"
+                  placeholder="&ensp;우편번호"
+                  readonly
+                />
+              </li>
+              <li class="area6">
+                <input
+                  type="button"
+                  style="display: inline"
+                  id="adderssBtn"
+                  onclick="sample6_execDaumPostcode()"
+                  value="우편번호 찾기"
+                  readonly
+                />
+                <br />
+              </li>
+              <li class="area7">
+                <input
+                  type="text"
+                  style="display: inline"
+                  id="sample6_address"
+                  placeholder="&ensp;주소"
+                  th:field="*{addressPerson}"
+                  readonly
+                />
+              </li>
+              <li class="area8">
+                <input
+                  type="text"
+                  style="display: inline"
+                  id="sample6_detailAddress"
+                  th:field="*{detailAddressPerson}"
+                  placeholder="&ensp;상세주소"
+                />
+              </li>
+              <li class="area9">
+                <input
+                  type="text"
+                  style="display: inline"
+                  id="sample6_extraAddress"
+                  placeholder="&ensp;참고항목"
+                  readonly
+                />
+              </li>
+              <li class="area10">
+                <button id="compl" class="updateBtn">수정완료</button>
+              </li>
+            </ul>
+
+            <ul class="mainContentMenu2 active">
+              <li class="PW1">
+                <label for="currentPW">
+                  <br />
+                  <p style="display: inline">현재 비밀번호 &ensp;&ensp;</p>
+                </label>
+              </li>
+              <input
+                type="password"
+                id="currentPW"
+                maxlength="20"
+                placeholder="&ensp;현재 비밀번호"
+              />
+              <i class="fa-solid fa-circle-check" style="color: #79cd9c"></i
+              ><i class="fa-regular fa-circle-check" style="color: #79cd9c"></i>
+              <div id="currentPW_down">
+                올바른 비밀번호를 입력하세요.(공백제외 영문 대소문자, 숫자,
+                특수문자를 조합해서 8~20자)
+              </div>
+              <li class="PW2">
+                <label for="newPW2">
+                  <br />
+                  <p style="display: inline">새 비밀번호 입력</p>
+                </label>
+              </li>
+              <input
+                type="password"
+                id="newPW2"
+                maxlength="20"
+                placeholder="&ensp;새 비밀번호"
+              />
+              <i class="fa-solid fa-circle-check a" style="color: #79cd9c"></i
+              ><i
+                class="fa-regular fa-circle-check a"
+                style="color: #79cd9c"
+              ></i>
+              <div id="newPW2_down">
+                올바른 비밀번호를 입력하세요.(공백제외 영문 대소문자, 숫자,
+                특수문자를 조합해서 8~20자)
+              </div>
+              <li class="PW3">
+                <label for="newPW3">
+                  <br />
+                  <p style="display: inline">새 비밀번호 확인</p>
+                </label>
+              </li>
+              <input
+                type="password"
+                id="newPW3"
+                maxlength="20"
+                placeholder="&ensp;새 비밀번호 재확인"
+              />
+              <i class="fa-solid fa-circle-check b" style="color: #79cd9c"></i
+              ><i
+                class="fa-regular fa-circle-check b"
+                style="color: #79cd9c"
+              ></i>
+              <div id="newPW3_down">
+                올바른 비밀번호를 입력하세요.(공백제외 영문 대소문자, 숫자,
+                특수문자를 조합해서 8~20자)
+              </div>
+              <br />
+              <br />
+              <div class="PW4">
+                <p>
+                  <br />안전한 비밀번호 사용하는 방법<br /><br />
+                  &ensp;영문 대소문자, 숫자, 특수문자를 조합해서 8~20자로
+                  작성(띄어쓰기 불가)<br /><br />
+                  &ensp;영문 대소문자, 숫자, 특수문자를 조합해서 작성 / 아이디와
+                  동일하거나 개인정보가 포함된 비밀번호는 사용 비권장 연속된
+                  영문/숫자나 키보드의 연속패턴은 사용 비권장(ex AAA, 1234,
+                  ASDF)<br /><br />
+                  &ensp;6개월마다 비밀번호 변경 권장
+                </p>
+                <br /><br />
+                <li class="PW5">
+                  <button id="compl" onclick="location.href='#'">
+                    변경완료
+                  </button>
+                </li>
+              </div>
+            </ul>
+          </form>
+          <ul class="mainContentMenu3 active">
+            <li class="UR1">
+              <label for="UR1_1">
+                <br />
+                <p style="display: inline">
+                  &ensp;아&ensp;&ensp;이&ensp;&ensp;디&ensp;
+                </p>
+              </label>
+            </li>
+            <input type="text" id="UR1_1" readonly />
+            <li class="UR2">
+              <label for="UR2_1">
+                <br />
+                <p style="display: inline">비밀번호 입력</p>
+              </label>
+            </li>
+            <input
+              type="password"
+              id="UR2_1"
+              maxlength="20"
+              placeholder="&ensp;비밀번호"
+            />
+            <i class="fa-solid fa-circle-check c" style="color: #79cd9c"></i
+            ><i class="fa-regular fa-circle-check c" style="color: #79cd9c"></i>
+            <div id="UR2_1_down">
+              올바른 비밀번호를 입력하세요.(공백제외 영문 대소문자, 숫자,
+              특수문자를 조합해서 8~20자)
+            </div>
+            <li class="UR3">
+              <label for="UR3_1">
+                <br />
+                <p style="display: inline">비밀번호 확인</p>
+              </label>
+            </li>
+            <input
+              type="password"
+              id="UR3_1"
+              maxlength="20"
+              placeholder="&ensp;비밀번호 재확인"
+            />
+            <i class="fa-solid fa-circle-check d" style="color: #79cd9c"></i
+            ><i class="fa-regular fa-circle-check d" style="color: #79cd9c"></i>
+            <div id="UR3_1_down">
+              올바른 비밀번호를 입력하세요.(공백제외 영문 대소문자, 숫자,
+              특수문자를 조합해서 8~20자)
+            </div>
+            <br />
+            <br />
+            <li class="UR4">
+              <p>
+                <br />
+                회원탈퇴 전 꼭 확인해주세요
+                <br />
+                <br />
+                1. 동일한 아이디로 재가입 볼까 탈퇴 신청 시 즉시 처리되며, 해당
+                아이디로 재가입/로그인이 불가능 합니다.<br />
+                2. 탈퇴 즉시 회원정보 삭제 탈퇴 즉시 이력서 및 구직활동 정보가
+                모두 삭제되며, 삭제된 정보는 복구되지 않습니다. 단, 공공적
+                성격의 게씨물은 삭제되지 않으므로 탈퇴 전 미리 삭제해주세요.<br />
+                3. 이용 정보 일정기간 보관 "전자상거래 등에서 소비자보호에 관한
+                법들'에 따라 유료 결제에 관한 계약 기록운 5년간 보관합니다.
+                부적합 정보, 이용제한 및 직계에 관한 기록은 일정기간 보관합니다.
+              </p>
+              <br />
+              <br />
+            </li>
+            <li class="UR5">
+              <button id="compl" onclick="location.href='#'">
+                회원탈퇴완료
+              </button>
+            </li>
+          </ul>
+        </div>
+      </main>
+
+      <!-- 푸터 -->
+      <div th:replace="~{/fragment/mainFooter :: mainFooter}"></div>
+      <!-- 공백 태그-->
+      <div class="sp1"></div>
+      <div class="sp2"></div>
+      <div class="sp3"></div>
+      <div class="sp4"></div>
+      <div class="sp5"></div>
+      <div class="sp6"></div>
+      <div class="sp7"></div>
+      <div class="sp8"></div>
+      <div class="sp9"></div>
+      <div class="sp10"></div>
+    </div>
+    <script
+      type="module"
+      src="../../static/fragmentCommon/common/layout.js"
+      th:src="@{/fragmentCommon/common/layout.js}"
+    ></script>
+    <script>
+      const $updateBtn = document.querySelector(".updateBtn");
+
+      const update_h = (e) => {
+        confirm("수정하시겠습니까?");
+      };
+      $updateBtn.addEventListener("click", update_h);
+    </script>
+    <script
+      src="./personChange.js"
+      th:src="@{/modifyPerson/personChange.js}"
+    ></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  </body>
+</html>

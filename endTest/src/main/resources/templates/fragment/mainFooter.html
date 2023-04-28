@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="서로에게 이득이 되는 아르바이트 구직정보 사이트 단디 알바"
+    />
+    <meta name="keywords" content="dandi" />
+    <meta name="author" content="4팀" />
+    <title>단디알바</title>
+    <link
+      rel="stylesheet"
+      href="../../static/fragmentCommon/common/common.css"
+      th:href="@{/fragmentCommon/common/common.css}"
+    />
+  </head>
+  <body>
+    <!-- 푸터 위쪽 -->
+    <footer id="footerUp" th:fragment="mainFooter">
+      <div class="footerUp__button1">
+        <a href="#">
+          <pre> 회사소개 </pre>
+        </a>
+      </div>
+      <div class="footerUp__button2">
+        <a href="#">
+          <pre> 이용약관 </pre>
+        </a>
+      </div>
+      <div class="footerUp__button3">
+        <a href="#">
+          <pre> 고객센터 </pre>
+        </a>
+      </div>
+      <div class="footerUp__button4">
+        <a href="#">
+          <pre> 개인정보처리 방침 </pre>
+        </a>
+      </div>
+    </footer>
+    <!-- 푸터 아래쪽 -->
+    <footer id="footerDown" th:fragment="mainFooter">
+      <div class="footerDown__text1">단디알바</div>
+      <div class="footerDown__text2">회사 소개 울산KH정보교육원</div>
+      <div class="footerDown__text3">대표자 4팀</div>
+      <div class="footerDown__text4">주소 울산시 남구 OOOOOO</div>
+      <div class="footerDown__text5">고객센터 010-1234-5678</div>
+      <div class="footerDown__text6">E-mail abcd@abcd.com</div>
+      <div class="footerDown__text7">
+        Copyright 2023 단디알바 Corp.All. Right Reserved.
+      </div>
+    </footer>
+  </body>
+</html>

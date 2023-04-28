@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>검색결과-단디알바</title>
+    <link
+      rel="stylesheet"
+      href="./jobBoardList.css"
+      th:href="@{/jobBoard/jobBoardList.css}"
+    />
+    <link
+      rel="stylesheet"
+      href="../../static/fragmentCommon/common/common.css"
+      th:href="@{/fragmentCommon/common/common.css}"
+    />
+  </head>
+  <body>
+    <div th:replace="~{/fragment/mainHeadLoginAfter :: mainHeaderAfter}"></div>
+    <div
+      th:replace="~{/fragment/mainNavigationLoginAfter :: mainNavigationAfter}"
+    ></div>
+    <form action="" th:method="post">
+      <main id="main">
+        <div class="main__scheduleTable">
+          <div class="title">구인 게시판</div>
+          <div class="main__tableHeader">
+            <div>근무지명</div>
+            <div>근무지 주소/제목</div>
+            <div>근무시간</div>
+            <div>급여</div>
+          </div>
+          <div class="main__tableBody">
+            <div th:each="jobBoard : ${jobLists}">
+              <div class="item">
+                <!-- <div>사진</div> -->
+                <div th:text="${jobBoard.placeName}">근무지명</div>
+              </div>
+              <div class="item">
+                <div th:text="${jobBoard.placeAddress}">주소</div>
+                <div>
+                  <a
+                    style="font-weight: bold"
+                    href=""
+                    th:href="@{/jobBoards/{id}/inquiry(id=${jobBoard.jobBoardIdPk})}"
+                    th:text="${jobBoard.titleJob}"
+                    >타이틀</a
+                  >
+                </div>
+              </div>
+              <div class="item">
+                <div th:text="${jobBoard.comeInJob}">출근시간</div>
+                <div th:text="${jobBoard.comeOutJob}">퇴근시간</div>
+              </div>
+              <div class="item">
+                <div th:text="${jobBoard.salaryWay}">시급</div>
+                <div th:text="${jobBoard.salaryAmount}">0000원</div>
+              </div>
+            </div>
+          </div>
+          <div class="main__btn">
+            <th:block th:if="${session.loginCompany?.idCompany}">
+              <button class="addBtn" type="button">등록</button>
+            </th:block>
+          </div>
+          <!-- 페이징 -->
+          <div class="jobBoardPage">
+            <!-- 이전 페이지 -->
+            <th:block th:if="${fc.prev}">
+              <a href="" th:href="@{/searches/{keyword}/1(keyword=${keyword})}"
+                >처음으로</a
+              >
+              <a
+                href=""
+                th:href="@{/searches/{keyword}/{reqPage}(keyword=${keyword}, reqPage=${fc.startPage-1})}"
+                >앞</a
+              >
+            </th:block>
+            <!-- 페이지 숫자 표시 -->
+            <th:block
+              th:each="pageNum : ${#numbers.sequence(fc.startPage, fc.endPage)}"
+            >
+              <th:block th:if="${pageNum !=0}">
+                <a
+                  class="pageItem"
+                  th:classappend="${fc.rc.reqPage == pageNum} ? 'active'"
+                  href=""
+                  th:href="@{/searches/{keyword}/{reqPage}(keyword=${keyword}, reqPage=${pageNum})}"
+                  th:text="${pageNum}"
+                  >1</a
+                >
+              </th:block>
+            </th:block>
+            <!-- 다음 페이지 -->
+            <th:block th:if="${fc.next}">
+              <a
+                href=""
+                th:href="@{/searches/{keyword}/{reqPage}(keyword=${keyword}, reqPage=${fc.endPage+1})}"
+                >뒤</a
+              >
+              <a
+                href=""
+                th:href="@{/searches/{keyword}/{reqPage}(keyword=${keyword}, reqPage=${fc.finalEndpage})}"
+                >끝으로</a
+              >
+            </th:block>
+          </div>
+        </div>
+      </main>
+    </form>
+    <div th:replace="~{/fragment/mainFooter :: mainFooter}"></div>
+    <!--  -->
+    <script
+      src="https://kit.fontawesome.com/881b9bf5d3.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="module"
+      src="../../static/fragmentCommon/common/layout.js"
+      th:src="@{/fragmentCommon/common/layout.js}"
+    ></script>
+    <script>
+      const $tableBody = document.querySelector(".main__tableBody");
+      const $addBtn = document.querySelector(".addBtn");
+      const addBtn_h = (e) => {
+        location.href = `/jobBoards/createBoard`;
+      };
+      $addBtn?.addEventListener("click", addBtn_h);
+
+      if ($tableBody.firstElementChild === null) {
+        $tableBody.innerHTML = `<p style="margin: 70px 0">검색 결과를 찾지 못하였습니다.</p>`;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="서로에게 이득이 되는 아르바이트 구직정보 사이트 단디 알바"
+    />
+    <meta name="keywords" content="dandi" />
+    <meta name="author" content="4팀" />
+    <title>단디알바-채팅</title>
+    <link
+      rel="stylesheet"
+      href="../../static/fragmentCommon/common/common.css"
+      th:href="@{/fragmentCommon/common/common.css}"
+    />
+    <link
+      rel="stylesheet"
+      href="/static/css/chat.css"
+      th:href="@{/css/chat.css}"
+    />
+  </head>
+  <body>
+    <main id="main">
+      <div id="usernamePage">
+        <div class="usernamePageContainer">
+          <h1 class="title">단디 채팅</h1>
+          <form id="usernameForm" name="usernameForm">
+            <div class="formGroup">
+              <input
+                type="text"
+                id="name"
+                class="formControl"
+                placeholder="자신의 ID를 입력하세요."
+                autocomplete="off"
+              />
+            </div>
+            <div class="formGroup">
+              <button class="accent usernameSubmit">채팅 연결</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="chatPage" class="hidden">
+        <div class="chatContainer">
+          <div class="chatHeader">
+            <h2>단디알바 채팅</h2>
+          </div>
+          <div class="connecting">연결중...</div>
+          <ul id="messageArea">
+            <!-- 텍스트 내용 들어오는 곳 -->
+          </ul>
+          <form id="messageForm" name="messageForm">
+            <div class="formGroup">
+              <div class="inputGroup clearfix">
+                <input
+                  type="text"
+                  id="message"
+                  class="formControl"
+                  placeholder="메시지 입력"
+                  autocomplete="off"
+                />
+                <button class="primary">보내기</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="/js/chat.js"></script>
+  </body>
+</html>

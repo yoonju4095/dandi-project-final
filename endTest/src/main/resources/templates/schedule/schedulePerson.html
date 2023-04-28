@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="./scheduleCompany.css"
+      th:href="@{/schedule/scheduleCompany.css}"
+    />
+    <link
+      rel="stylesheet"
+      href="../../static/fragmentCommon/common/common.css"
+      th:href="@{/fragmentCommon/common/common.css}"
+    />
+    <title>스케줄 보기-개인</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div
+        th:replace="~{/fragment/mainHeadLoginAfter :: mainHeaderAfter}"
+      ></div>
+      <div
+        th:replace="~{/fragment/mainNavigationLoginAfter :: mainNavigationAfter}"
+      ></div>
+      <main id="main">
+        <div class="main__scheduleTable">
+          <div class="title">My 스케줄</div>
+          <div class="main__tableHeader">
+            <div>고용주</div>
+            <div>My 담당업무</div>
+            <div>요일</div>
+            <div>출퇴근 시간</div>
+            <div>고용기간</div>
+          </div>
+          <form action="">
+            <div class="main__tableBody"></div>
+          </form>
+          <div class="main__btn">
+            <!-- <button class="requestBtn">스케줄 변경 요청</button> -->
+          </div>
+        </div>
+        <!-- 모달 -->
+      </main>
+      <div th:replace="~{/fragment/mainFooter :: mainFooter}"></div>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/881b9bf5d3.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" th:src="@{/schedule/ajax.js}"></script>
+    <script type="module" th:src="@{/schedule/schedulePerson.js}"></script>
+    <script
+      type="module"
+      src="../../static/fragmentCommon/common/layout.js"
+      th:src="@{/fragmentCommon/common/layout.js}"
+    ></script>
+  </body>
+</html>

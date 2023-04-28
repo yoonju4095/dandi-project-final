@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Title</title>
+  </head>
+  <body>
+    <button>
+      <a th:href="@{|/resume/${session.loginPerson.idPerson}/add|}"
+        >이력서 작성</a
+      >
+    </button>
+
+    <table id="add" border="1">
+      <th>번호</th>
+      <th>이력서명</th>
+      <th>작성일/수정일</th>
+      <th>수정/삭제</th>
+      <tr th:each="resumeItem : ${resumeLists}">
+        <td th:text="${resumeItemStat.count}">1</td>
+        <td>
+          <a
+            th:text="${resumeItem.resumeTitle}"
+            th:href="@{|/resume/${session.loginPerson.idPerson}/resumeFormDetail/${resumeItem.resumeId}|}"
+          ></a>
+        </td>
+        <td><span>날짜</span></td>
+        <td>
+          <span>
+            <button>
+              <a
+                href=""
+                th:href="@{|/resume/${session.loginPerson.idPerson}/resumeFormModify/${resumeItem.resumeId}|}"
+                >수정</a
+              >
+            </button>
+            <button>
+              <a
+                href=""
+                th:href="@{|/resume/${session.loginPerson.idPerson}/${resumeItem.resumeId}/del|}"
+                >삭제</a
+              >
+            </button>
+          </span>
+        </td>
+      </tr>
+    </table>
+    <!--<div id="list__box">-->
+    <!--  <div id="loc1__box">-->
+    <!--    <div id="box__loc1">선택창</div>-->
+    <!--  </div>-->
+    <!--  <div id="loc2__box">-->
+    <!--    <div id="box__loc2">이력서제목</div>-->
+    <!--  </div>-->
+    <!--  <div id="loc3__box">-->
+    <!--    <div id="box__loc3">작성일자/수정날짜</div>-->
+    <!--  </div>-->
+    <!--  <div th:each="resumeItem : ${resumeLists}">-->
+    <!--    <div id="loc5__box" th:text="${resumeItemStat.count}">1</div>-->
+    <!--    <div id="loc6__box">-->
+    <!--      <div id="box__loc6" th:text="${resumeItem.resumeTitle}"></div>-->
+    <!--    </div>-->
+    <!--    <div id="loc7__box">-->
+    <!--      <div id="box__loc7">3</div>-->
+    <!--    </div>-->
+    <!--    <div id="loc8__box">-->
+    <!--      <div id="box__loc8">-->
+    <!--        <button>수정</button>-->
+    <!--        <button>삭제</button>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--    <div id="loc9__box">-->
+    <!--      <div id="box__loc9">2</div>-->
+    <!--    </div>-->
+    <!--    <div id="loc10__box">-->
+    <!--      <div id="box__loc10" th:text="${resumeItem[1].resumeTitle}"></div>-->
+    <!--    </div>-->
+    <!--    <div id="loc11__box">-->
+    <!--      <div id="box__loc11">7</div>-->
+    <!--    </div>-->
+    <!--    <div id="loc12__box">-->
+    <!--      <div id="box__loc12">-->
+    <!--        <button>수정</button>-->
+    <!--        <button>삭제</button>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--    <div id="loc13__box">-->
+    <!--      <div id="box__loc13">3</div>-->
+    <!--    </div>-->
+    <!--    <div id="loc14__box">-->
+    <!--      <div id="box__loc14" th:text="${resumeItem[2].resumeTitle}"></div>-->
+    <!--    </div>-->
+    <!--    <div id="loc15__box">-->
+    <!--      <div id="box__loc15">11</div>-->
+    <!--    </div>-->
+    <!--    <div id="loc16__box">-->
+    <!--      <div id="box__loc16">-->
+    <!--        <button>수정</button>-->
+    <!--        <button>삭제</button>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!-- </div> -->
+    <!-- </div> -->
+  </body>
+</html>

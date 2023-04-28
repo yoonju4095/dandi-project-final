@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="서로에게 이득이 되는 아르바이트 구직정보 사이트 단디 알바"
+    />
+    <meta name="keywords" content="dandi" />
+    <meta name="author" content="4팀" />
+    <title>단디알바</title>
+    <link
+      rel="stylesheet"
+      href="../../static/fragmentCommon/common/common.css"
+      th:href="@{/fragmentCommon/common/common.css}"
+    />
+  </head>
+  <!-- 카테고리 상자 숨기기 -->
+  <body>
+    <!-- 헤더 -->
+    <header id="header" th:fragment="mainHeaderAfter">
+      <div class="header__title"><a th:href="@{/}">단디알바</a></div>
+      <div class="header__subTitle">
+        <a th:href="@{/}">:짧지만 확실하게</a>
+      </div>
+      <div class="header__chat">
+        <a href="" class="header__chatBtn" th:href="@{/chatRoom}">채팅하기</a>
+      </div>
+      <div class="header__logout">
+        <a class="header__logoutButton" th:href="@{/logout}">로그아웃</a>
+      </div>
+    </header>
+  </body>
+</html>

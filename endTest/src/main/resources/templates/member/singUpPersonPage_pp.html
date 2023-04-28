@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입-개인</title>
+</head>
+<body>
+  <h2>개인 회원가입</h2>
+  <hr>
+  <form action="" method="post" th:object="${singUpPerson}">
+    <div>
+      <input type="text" name="" id="" placeholder="아이디" th:field="*{idPerson}">
+      <span th:errors="*{idPerson}"></span>
+    </div>
+    <div>
+      <input type="password" name="" id="" placeholder="비밀번호" th:field="*{pwPerson}">
+      <span th:errors="*{pwPerson}"></span>
+    </div>
+    <div>
+      <input type="password" name="" id="" placeholder="비밀번호 확인" th:field="*{pwChkPerson}">
+      <span th:errors="*{pwChkPerson}"></span>
+    </div>
+    <div>
+      <input type="text" name="" id="" placeholder="성명" th:field="*{namePerson}" minlength="2" maxlength="5">
+      <span th:errors="*{namePerson}"></span>
+    </div>
+    <div>
+      <input type="text" name="" id="" placeholder="생년월일(6자)" maxlength="6" th:field="*{birthPerson}">
+      <span th:errors="*{birthPerson}"></span>
+    </div>
+    <div>
+      <label for="">남</label><input type="radio" value="남" name="" id="" th:field="*{genderPerson}">
+      <label for="">여</label><input type="radio" value="여" name="" id="" th:field="*{genderPerson}">
+    </div>
+    <div>
+      <input type="text" name="" id="" placeholder="주소" th:field="*{addressPerson}">
+      <span th:errors="*{addressPerson}"></span>
+    </div>
+    <div>
+      <input type="text" name="" id="" placeholder="상세주소" th:field="*{detailAddressPerson}">
+      <span th:errors="*{detailAddressPerson}"></span>
+    </div>
+    <div>
+      <input type="email" name="" id="" placeholder="이메일" th:field="*{emailPerson}">
+      <span th:errors="*{emailPerson}"></span>
+    </div>
+    <div>
+      <input type="tel" name="" id="" placeholder="전화번호('-'는 제외)" maxlength="11" th:field="*{phonePerson}">
+      <span th:errors="*{phonePerson}"></span>
+    </div>
+    <div><button>가입하기</button></div>
+  </form>
+</body>
+</html>

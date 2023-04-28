@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="서로에게 이득이 되는 아르바이트 구직정보 사이트 단디 알바"
+    />
+    <meta name="keywords" content="dandi" />
+    <meta name="author" content="4팀" />
+    <title>단디알바</title>
+    <link
+      rel="stylesheet"
+      href="../../static/fragmentCommon/common/common.css"
+      th:href="@{/fragmentCommon/common/common.css}"
+    />
+  </head>
+  <body>
+    <!-- 글로벌 메뉴바 -->
+    <nav id="gnb" th:fragment="mainNavigationAfter">
+      <div class="lnb">
+        <div class="container1">
+          <li class="gnb__infoLnb">
+            <a href="#" th:href="@{/jobBoards}">구인 게시판</a>
+          </li>
+        </div>
+        <div class="container2">
+          <li class="gnb__cumLnb">
+            <a href="#" th:href="@{/trouble}">고민 게시판</a>
+          </li>
+        </div>
+        <th:block th:if="${session.loginPerson?.personIdPk}">
+          <div class="container3">
+            <li class="gnb__memberLnb">
+              <a
+                href="#"
+                th:href="@{/memberPersons/{id}/personInfo(id=${session.loginPerson?.personIdPk})}"
+                >마이페이지</a
+              >
+            </li>
+            <li class="gnb__memberLnb1">
+              <a
+                href="#"
+                th:href="@{/resume/{id}/add(id=${session.loginPerson?.idPerson})}"
+                >이력서 작성</a
+              >
+            </li>
+            <li class="gnb__memberLnb2">
+              <a
+                href="#"
+                th:href="@{/resume/{id}/blank(id=${session.loginPerson?.idPerson})}"
+                >이력서 관리</a
+              >
+            </li>
+            <li class="gnb__memberLnb3">
+              <a
+                      href=""
+                      th:href="@{/apply/{personId}(personId=${session.loginPerson?.idPerson})}"
+              >이력서 지원 내역</a
+              >
+            </li>
+            <li class="gnb__memberLnb4">
+              <a
+                      href="#"
+                      th:href="@{/rest/schedules/viewSchedule/{id}(id=${session.loginPerson?.idPerson})}"
+              >스케줄 보기</a
+              >
+            </li>
+            <li class="gnb__memberLnb5">
+              <a
+                      href="#"
+                      th:href="@{/memberPersons/{id}/modify(id=${session.loginPerson?.personIdPk})}"
+              >회원정보 수정</a
+              >
+            </li>
+            <li class="gnb__memberLnb6"><a href="#">비밀번호 변경</a></li>
+          </div>
+        </th:block>
+        <th:block th:if="${session.loginCompany?.companyIdPk}">
+          <div class="container4">
+            <li class="gnb__managerLnb">
+              <a
+                href="#"
+                th:href="@{/memberCompanies/{id}/companyInfo(id=${session.loginCompany?.companyIdPk})}"
+                >마이페이지</a
+              >
+            </li>
+            <li class="gnb__managerLnb1"><a href="#">구인게시글 관리</a></li>
+            <li class="gnb__managerLnb2"><a
+                    href=""
+                    th:href="@{|/apply/${session.loginCompany?.idCompany}/List|}"
+            >이력서 지원 내역</a
+            ></li>
+            <li class="gnb__managerLnb3">
+              <a
+                href="#"
+                th:href="@{/rest/schedules/managing/{id}(id=${session.loginCompany?.idCompany})}"
+                >스케줄 관리</a
+              >
+            </li>
+            <li class="gnb__managerLnb4">
+              <a
+                href="#"
+                th:href="@{/memberCompanies/{id}/modify(id=${session.loginCompany?.companyIdPk})}"
+                >회원정보 수정</a
+              >
+            </li>
+            <li class="gnb__managerLnb5"><a href="#">비밀번호 변경</a></li>
+          </div>
+        </th:block>
+        <div class="container5">
+          <li class="gnb__supportLnb1">
+            <a href="#" th:href="@{/notice}">공지사항</a>
+          </li>
+          <li class="gnb__supportLnb2"><a href="#">아이디 찾기</a></li>
+          <li class="gnb__supportLnb3"><a href="#">비밀번호 찾기</a></li>
+          <li class="gnb__supportLnb4"><a href="#">회원탈퇴</a></li>
+        </div>
+      </div>
+      <div id="gnb__box">
+        <ul class="gnb__info">
+          <a href="#">채용정보</a>
+        </ul>
+        <ul class="gnb__cum">
+          <a href="#">커뮤니티</a>
+        </ul>
+        <th:block th:if="${session.loginPerson?.personIdPk}">
+          <ul class="gnb__member">
+            <a href="#">개인 서비스</a>
+          </ul>
+        </th:block>
+        <th:block th:if="${session.loginCompany?.companyIdPk}">
+          <ul class="gnb__manager">
+            <a href="#">기업 서비스</a>
+          </ul>
+        </th:block>
+        <ul class="gnb__support">
+          <a href="#">고객지원</a>
+        </ul>
+      </div>
+    </nav>
+    <script
+      type="module"
+      src="../../static/fragmentCommon/common/layout.js"
+      th:src="@{/fragmentCommon/common/layout.js}"
+    ></script>
+  </body>
+</html>

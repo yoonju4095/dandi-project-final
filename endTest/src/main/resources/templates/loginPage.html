@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="서로에게 이득이 되는 아르바이트 구직정보 사이트 단디 알바"
+    />
+    <meta name="keywords" content="dandi" />
+    <meta name="author" content="4팀" />
+    <link rel="stylesheet" th:href="@{/loginPage/common/common.css}" />
+    <link rel="stylesheet" th:href="@{/loginPage/login.css}" />
+    <title>로그인-단디알바</title>
+    <style>
+      span {
+        font-size: 10pt;
+        font-weight: bold;
+        color: rgb(248, 68, 68);
+        text-indent: 0.7rem;
+      }
+      .main__title {
+        transition: 0.25s;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <!-- 헤더 -->
+      <header id="header">
+        <div class="header__title"><a th:href="@{/}">단디알바</a></div>
+        <div class="header__subTitle">
+          <a th:href="@{/}">:짧지만 확실하게</a>
+        </div>
+      </header>
+
+      <!-- 메인: insert content -->
+      <main id="main">
+        <div class="main__container">
+          <div class="main__title">
+            <a href="#">개인회원</a><a href="#">기업회원</a>
+          </div>
+          <div class="main__personMember">
+            <form action="" th:method="post" th:object="${loginPersonForm}">
+              <input type="hidden" name="loginType" value="person" />
+              <input
+                type="text"
+                placeholder="아이디 입력"
+                th:field="*{idPerson}"
+              />
+              <input
+                type="password"
+                placeholder="비밀번호 입력"
+                th:field="*{pwPerson}"
+              />
+              <span th:errors="*{idPerson}"></span>
+              <span th:errors="*{pwPerson}"></span>
+              <div><button>로그인</button></div>
+              <ul>
+                <li><a th:href="@{/singUpSelect}">회원가입</a></li>
+                <li><a href="">아이디 찾기</a></li>
+                <li><a href="">비밀번호 찾기</a></li>
+              </ul>
+            </form>
+          </div>
+          <div class="main__companyMember">
+            <form action="" th:method="post" th:object="${loginCompanyForm}">
+              <input type="hidden" name="loginType" value="company" />
+              <input
+                type="text"
+                id="inputId"
+                placeholder="아이디 입력"
+                th:field="*{idCompany}"
+              />
+              <input
+                type="password"
+                placeholder="비밀번호 입력"
+                th:field="*{pwCompany}"
+              />
+              <span th:errors="*{idCompany}"></span>
+              <span th:errors="*{pwCompany}"></span>
+              <div><button>로그인</button></div>
+              <ul>
+                <li><a th:href="@{/singUpSelect}">회원가입</a></li>
+                <li><a href="">아이디 찾기</a></li>
+                <li><a href="">비밀번호 찾기</a></li>
+              </ul>
+            </form>
+          </div>
+        </div>
+      </main>
+
+      <!-- 공백 태그-->
+      <div class="sp1"></div>
+      <div class="sp2"></div>
+      <div class="sp5"></div>
+      <div class="sp6"></div>
+    </div>
+    <script type="module" th:src="@{/loginPage/login.js}"></script>
+  </body>
+</html>

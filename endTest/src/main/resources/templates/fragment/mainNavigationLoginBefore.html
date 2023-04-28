@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="서로에게 이득이 되는 아르바이트 구직정보 사이트 단디 알바"
+    />
+    <meta name="keywords" content="dandi" />
+    <meta name="author" content="4팀" />
+    <title>단디알바</title>
+    <link
+      rel="stylesheet"
+      href="../../static/fragmentCommon/common/common.css"
+      th:href="@{/fragmentCommon/common/common.css}"
+    />
+  </head>
+  <body>
+    <!-- 글로벌 메뉴바 -->
+    <nav id="gnb" th:fragment="mainNavigationBefore">
+      <div class="lnb">
+        <div class="container1">
+          <li class="gnb__infoLnb">
+            <a href="#" th:href="@{/login}">구인 게시판</a>
+          </li>
+        </div>
+        <div class="container2">
+          <li class="gnb__cumLnb">
+            <a href="#" th:href="@{/login}">고민 게시판</a>
+          </li>
+        </div>
+        <div class="container3">
+          <li class="gnb__memberLnb">
+            <a href="#" th:href="@{/login}">마이페이지</a>
+          </li>
+          <li class="gnb__memberLnb1">
+            <a href="#" th:href="@{/login}">이력서 작성</a>
+          </li>
+          <li class="gnb__memberLnb2">
+            <a href="#" th:href="@{/login}">이력서 관리</a>
+          </li>
+          <li class="gnb__memberLnb3">
+            <a href="#" th:href="@{/login}">스케줄 보기</a>
+          </li>
+          <li class="gnb__memberLnb4">
+            <a href="#" th:href="@{/login}">회원정보 수정</a>
+          </li>
+          <li class="gnb__memberLnb5">
+            <a href="#" th:href="@{/login}">비밀번호 변경</a>
+          </li>
+        </div>
+        <div class="container4">
+          <li class="gnb__managerLnb"><a href="#">마이페이지</a></li>
+          <li class="gnb__managerLnb1"><a href="#">구인게시글 관리</a></li>
+          <li class="gnb__managerLnb2">
+            <a href="#" th:href="@{/login}">지원자 이력서 관리</a>
+          </li>
+          <li class="gnb__managerLnb3">
+            <a href="#" th:href="@{/login}">스케줄 관리</a>
+          </li>
+          <li class="gnb__managerLnb4">
+            <a href="#" th:href="@{/login}">회원정보 수정</a>
+          </li>
+          <li class="gnb__managerLnb5">
+            <a href="#" th:href="@{/login}">비밀번호 변경</a>
+          </li>
+        </div>
+        <div class="container5">
+          <li class="gnb__supportLnb1">
+            <a href="#" th:href="@{/login}">공지사항</a>
+          </li>
+          <li class="gnb__supportLnb2">
+            <a href="#" th:href="@{/login}">아이디 찾기</a>
+          </li>
+          <li class="gnb__supportLnb3">
+            <a href="#" th:href="@{/login}">비밀번호 찾기</a>
+          </li>
+          <li class="gnb__supportLnb4">
+            <a href="#" th:href="@{/login}">회원탈퇴</a>
+          </li>
+        </div>
+      </div>
+      <div id="gnb__box">
+        <ul class="gnb__info">
+          <a href="#">채용정보</a>
+        </ul>
+        <ul class="gnb__cum">
+          <a href="#">커뮤니티</a>
+        </ul>
+        <ul class="gnb__member">
+          <a href="#">개인 서비스</a>
+        </ul>
+        <ul class="gnb__manager">
+          <a href="#">기업 서비스</a>
+        </ul>
+        <ul class="gnb__support">
+          <a href="#">고객지원</a>
+        </ul>
+      </div>
+    </nav>
+    <script
+      type="module"
+      src="../../static/fragmentCommon/common/layout.js"
+      th:src="@{/fragmentCommon/common/layout.js}"
+    ></script>
+  </body>
+</html>

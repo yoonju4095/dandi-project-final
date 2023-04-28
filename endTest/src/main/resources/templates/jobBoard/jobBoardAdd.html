@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="서로에게 이득이 되는 아르바이트 구직정보 사이트 단디 알바"
+    />
+    <meta name="keywords" content="dandi" />
+    <meta name="author" content="4팀" />
+    <link
+      rel="stylesheet"
+      href="../../static/fragmentCommon/common/common.css"
+      th:href="@{/fragmentCommon/common/common.css}"
+    />
+    <link
+      rel="stylesheet"
+      href="./jobBoard.css"
+      th:href="@{/jobBoard/jobBoard.css}"
+    />
+    <link rel="stylesheet" th:href="@{/css/map.css}" />
+
+    <title>구인게시판-단디알바</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div
+        th:replace="~{/fragment/mainHeadLoginAfter :: mainHeaderAfter}"
+      ></div>
+      <div
+        th:replace="~{/fragment/mainNavigationLoginAfter :: mainNavigationAfter}"
+      ></div>
+      <!-- 메인: insert content -->
+      <form
+        action=""
+        th:method="post"
+        th:object="${saveForm}"
+        enctype="multipart/form-data"
+      >
+        <main id="main">
+          <!-- <div class="profiled"> -->
+          <!-- <div>사진</div> -->
+
+          <!-- </div> -->
+          <div class="main__wrapper">
+            <div class="main__box">
+              <div>
+                <input
+                  type="text"
+                  th:field="*{titleJob}"
+                  placeholder="게시글 제목 입력"
+                />
+              </div>
+              <input
+                type="text"
+                th:field="*{idJob}"
+                placeholder="기업회원 아이디 입력"
+                style="display: none"
+              />
+              <input
+                type="text"
+                id="idCompany"
+                th:value="${session.loginCompany?.idCompany}"
+                style="display: none"
+              />
+              <span th:errors="*{titleJob}"></span>
+              <ul class="container1">
+                <!-- <li>등급</li>
+                <li>급여</li>
+                <li>출근날</li>
+                <li>출근시간</li>
+                <li>모집방법</li> -->
+              </ul>
+              <section class="content2">
+                <!-- 사진 업로드 -->
+                <div>
+                  <img id="preview" />
+                  <input type="file" th:field="*{imageFiles}" multiple />
+                </div>
+                <ul class="container2">
+                  <h2>모집조건</h2>
+                  <ul>
+                    <li>마감일</li>
+                    <li>
+                      <input type="date" th:field="*{closingDate}" />
+                      <span th:errors="*{closingDate}"></span>
+                    </li>
+                    <li>인원</li>
+                    <li>
+                      <input
+                        type="text"
+                        maxlength="2"
+                        th:field="*{numberOfPersons}"
+                      />
+                      <span th:errors="*{numberOfPersons}"></span>
+                    </li>
+                    <li>성별</li>
+                    <li>
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="무관"
+                        th:field="*{genderJob}"
+                      />무관
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="남"
+                        th:field="*{genderJob}"
+                      />남<input
+                        type="radio"
+                        value="여"
+                        name="gender"
+                        th:field="*{genderJob}"
+                      />여
+                      <span th:errors="*{genderJob}"></span>
+                    </li>
+                    <li>학력</li>
+                    <li>
+                      <select name="" id="" th:field="*{academicAbility}">
+                        <option value="초졸">초졸</option>
+                        <option value="중졸">중졸</option>
+                        <option value="고졸">고졸</option>
+                        <option value="대졸">대졸</option>
+                      </select>
+                      <span th:errors="*{academicAbility}"></span>
+                    </li>
+                  </ul>
+                </ul>
+              </section>
+              <section class="content3">
+                <ul class="container3">
+                  <h2>근무조건</h2>
+                  <li>급여</li>
+                  <li>
+                    <input type="number" th:field="*{salaryAmount}" />
+                    <span th:errors="*{salaryAmount}"></span>
+                    <select name="" id="" th:field="*{salaryWay}">
+                      <option value="시급">시급</option>
+                      <option value="월급">월급</option>
+                      <option value="일급">일급</option>
+                      <option value="주급">주급</option>
+                    </select>
+                    <span th:errors="*{salaryWay}"></span>
+                  </li>
+                  <li>근무기간</li>
+                  <li>
+                    <select name="" id="" th:field="*{workPeriod}">
+                      <option value="3개월미만">3개월미만</option>
+                      <option value="3개월이상">3개월이상</option>
+                      <option value="6개월이상">6개월이상</option>
+                      <option value="1년이상">1년이상</option>
+                    </select>
+                    <span th:errors="*{workPeriod}"></span>
+                  </li>
+                  <li>근무요일</li>
+                  <li>
+                    월<input
+                      type="checkbox"
+                      value="월"
+                      id="daySchedule"
+                      th:field="*{workDay}"
+                    />
+                    화<input
+                      type="checkbox"
+                      value="화"
+                      id="daySchedule"
+                      th:field="*{workDay}"
+                    />
+                    수<input
+                      type="checkbox"
+                      value="수"
+                      id="daySchedule"
+                      th:field="*{workDay}"
+                    />
+                    목<input
+                      type="checkbox"
+                      value="목"
+                      id="daySchedule"
+                      th:field="*{workDay}"
+                    />
+                    금<input
+                      type="checkbox"
+                      value="금"
+                      id="daySchedule"
+                      th:field="*{workDay}"
+                    />
+                    토<input
+                      type="checkbox"
+                      value="토"
+                      id="daySchedule"
+                      th:field="*{workDay}"
+                    />
+                    일<input
+                      type="checkbox"
+                      value="일"
+                      id="daySchedule"
+                      th:field="*{workDay}"
+                    />
+                    <span th:errors="*{workDay}"></span>
+                  </li>
+                  <li>근무시간</li>
+                  <li>
+                    출근<input
+                      type="time"
+                      name=""
+                      id=""
+                      th:field="*{comeInJob}"
+                    />
+                    <span th:errors="*{comeInJob}"></span>
+                    퇴근<input
+                      type="time"
+                      name=""
+                      id=""
+                      th:field="*{comeOutJob}"
+                    />
+                    <span th:errors="*{comeOutJob}"></span>
+                  </li>
+                  <li>업직종</li>
+                  <li>
+                    <select name="" id="" th:field="*{workTypeJob}">
+                      <option value="서빙">서빙</option>
+                      <option value="주방">주방</option>
+                      <option value="바">바</option>
+                      <option value="조리">조리</option>
+                      <option value="직종2">직종2</option>
+                      <option value="직종3">직종3</option>
+                      <option value="직종4">직종4</option>
+                    </select>
+                    <span th:errors="*{workTypeJob}"></span>
+                  </li>
+                  <li>고용형태</li>
+                  <li>
+                    <select name="" id="" th:field="*{employForm}">
+                      <option value="일용직">일용직</option>
+                      <option value="계약직">계약직</option>
+                      <option value="정규직">정규직</option>
+                    </select>
+                    <span th:errors="*{employForm}"></span>
+                  </li>
+                  <li>복리후생</li>
+                  <li>
+                    <input type="text" th:field="*{benefitJob}" />
+                  </li>
+                </ul>
+              </section>
+              <section class="content4">
+                <ul class="container4">
+                  <h2>근무지 정보</h2>
+                  <li>근무지명</li>
+                  <li>
+                    <input type="text" th:field="*{placeName}" />
+                    <span th:errors="*{placeName}"></span>
+                  </li>
+                  <li>근무지 주소</li>
+                  <li>
+                    <input type="text" th:field="*{placeAddress}" />
+                    <span th:errors="*{placeAddress}"></span>
+                  </li>
+                  <!-- 카카오 지도 -->
+                  <li>
+                    <div id="map"></div>
+                  </li>
+                </ul>
+              </section>
+              <section class="content5">
+                <ul class="container5">
+                  <h2>상세 모집 요강</h2>
+                  <li>
+                    <textarea
+                      cols="50"
+                      rows="10"
+                      th:field="*{detailContent}"
+                      style="resize: none"
+                    ></textarea>
+                  </li>
+                </ul>
+              </section>
+              <section class="content6">
+                <ul class="container6">
+                  <h2>채용 담당자</h2>
+                  <li>담당자</li>
+                  <li>
+                    <input type="text" th:field="*{managerName}" />
+                    <span th:errors="*{managerName}"></span>
+                  </li>
+                  <li>연락처</li>
+                  <li>
+                    <input type="text" th:field="*{managerPhone}" />
+                    <span th:errors="*{managerPhone}"></span>
+                  </li>
+                </ul>
+              </section>
+              <div class="btns">
+                <button type="submit">등록하기</button>
+                <a href="#" th:href="@{/jobBoards}">취소하기</a>
+              </div>
+            </div>
+          </div>
+        </main>
+      </form>
+      <!-- 푸터 -->
+      <div th:replace="~{/fragment/mainFooter :: mainFooter}"></div>
+      <!-- 공백 태그-->
+      <div class="sp1"></div>
+      <div class="sp2"></div>
+      <div class="sp3"></div>
+      <div class="sp4"></div>
+      <div class="sp5"></div>
+      <div class="sp6"></div>
+      <div class="sp7"></div>
+      <div class="sp8"></div>
+      <div class="sp9"></div>
+      <div class="sp10"></div>
+    </div>
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2bc63660bbe47ed5d7b81a7ae80a6dd4&libraries=services"
+    ></script>
+    <script th:src="@{/js/map.js}"></script>
+    <script
+      type="module"
+      src="../../static/fragmentCommon/common/layout.js"
+      th:src="@{/fragmentCommon/common/layout.js}"
+    ></script>
+    <script type="module">
+      const $idJob = document.getElementById("idJob");
+      const $idCompany = document.getElementById("idCompany");
+      $idJob.value = $idCompany.value;
+
+      const $imageFiles = document.getElementById("imageFiles");
+      function readURL_h(input) {
+        if (input.files && input.files[0]) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const previewImage = document.getElementById("preview");
+            previewImage.src = e.target.result;
+          };
+          reader.readAsDataURL(input.files[0]);
+        } else {
+          document.getElementById("preview").src = "";
+        }
+      }
+      $imageFiles.addEventListener("change", (e) => {
+        readURL_h(e.target);
+      });
+    </script>
+  </body>
+</html>

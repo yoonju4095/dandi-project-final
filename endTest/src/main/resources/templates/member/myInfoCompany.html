@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="서로에게 이득이 되는 아르바이트 구직정보 사이트 단디 알바"
+    />
+    <meta name="keywords" content="dandi" />
+    <meta name="author" content="4팀" />
+    <title>마이페이지-단디알바</title>
+    <link
+      rel="stylesheet"
+      href="../../static/fragmentCommon/common/common.css"
+      th:href="@{/fragmentCommon/common/common.css}"
+    />
+    <link
+      rel="stylesheet"
+      href="./mypage.css"
+      th:href="@{/mypage/mypage.css}"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/72dc3cd256.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <!-- 헤더 -->
+      <div
+        th:replace="~{/fragment/mainHeadLoginAfter :: mainHeaderAfter}"
+      ></div>
+      <div
+        th:replace="~{/fragment/mainNavigationLoginAfter :: mainNavigationAfter}"
+      ></div>
+      <!-- 메인: insert content -->
+      <main id="wrap__main">
+        <div id="wrap__content">
+          <div id="main__title">
+            <h1>마이페이지</h1>
+          </div>
+          <form action="" th:object="${infoCompany}">
+            <div id="main__profile">
+              <ul>
+                <li>
+                  <i class="fa-regular fa-user"></i>
+                </li>
+              </ul>
+            </div>
+            <div id="main__info">
+              <ul>
+                <li id="text1">
+                  <input
+                    type="text"
+                    th:field="*{companyIdPk}"
+                    disabled
+                    style="display: none"
+                  />
+                  <span>이름</span>
+                  <input type="text" th:field="*{nameCompany}" readonly />
+                </li>
+                <li id="mypagebirth">
+                  <span>사업자번호</span>
+                  <input
+                    type="text"
+                    name="mypageBirth"
+                    th:field="*{businessCompany}"
+                    readonly
+                  />
+                </li>
+
+                <li id="text2">
+                  <span>주소</span>
+                  <input type="text" th:field="*{addressCompany}" readonly />
+                </li>
+                <li id="text3">
+                  <span>상세주소</span>
+                  <input
+                    type="text"
+                    th:field="*{detailAddressCompany}"
+                    readonly
+                  />
+                </li>
+                <li id="text4">
+                  <span>이메일</span>
+                  <input type="email" th:field="*{emailCompany}" readonly />
+                </li>
+                <li id="text5">
+                  <span>전화번호</span>
+                  <input type="tel" th:field="*{phoneCompany}" readonly />
+                </li>
+              </ul>
+              <div id="main__bottom">
+                <ul>
+                  <li>
+                    <button type="button">
+                      <a
+                        class="updateBtn"
+                        th:href="@{/memberCompanies/{id}/modify(id=${session.loginCompany?.companyIdPk})}"
+                        >회원수정</a
+                      >
+                    </button>
+                  </li>
+                  <li>
+                    <button>비밀번호 변경</button>
+                  </li>
+                  <li>
+                    <button>회원탈퇴</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </form>
+        </div>
+      </main>
+      <!-- 푸터 -->
+      <div th:replace="~{/fragment/mainFooter :: mainFooter}"></div>
+      <!-- 공백 태그-->
+      <div class="sp1"></div>
+      <div class="sp2"></div>
+      <div class="sp3"></div>
+      <div class="sp4"></div>
+      <div class="sp5"></div>
+      <div class="sp6"></div>
+      <div class="sp7"></div>
+      <div class="sp8"></div>
+      <div class="sp9"></div>
+      <div class="sp10"></div>
+    </div>
+    <script
+      type="module"
+      src="../../static/fragmentCommon/common/layout.js"
+      th:src="@{/fragmentCommon/common/layout.js}"
+    ></script>
+    <script>
+      const $updateBtn = document.querySelector(".updateBtn");
+      const update_h = (e) => {
+        confirm("수정하시겠습니까?");
+      };
+      $updateBtn.addEventListener("click", update_h);
+    </script>
+  </body>
+</html>

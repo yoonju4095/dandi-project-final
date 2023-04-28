@@ -1,0 +1,256 @@
+#wrap__main {
+  display: grid;
+  grid-template-areas: "mw mw1 mw2";
+}
+
+#wrap__content {
+  display: grid;
+  grid-area: mw1;
+  grid-template-areas:
+    "mt1"
+    "mc1"
+    "mb1";
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  box-shadow: 0.4rem 0.4rem 0.5rem rgba(0, 0, 0, 0.2);
+  border-radius: 65px;
+  margin-top: 110px;
+  margin-bottom: 100px;
+  align-content: center;
+}
+
+#main__title {
+  display: grid;
+  grid-area: mt1;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bolder;
+  padding: 20px;
+  background-color: #79cd9c;
+  border-top-right-radius: 35px;
+  border-top-left-radius: 35px;
+  margin-top: 15px;
+}
+
+#main__top {
+  grid-area: mc1;
+  margin-top: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#main__top li {
+   font-size: 20px;
+    font-weight: bold;
+    line-height:150%;
+    margin-left:65px;
+}
+#main__bottom {
+  grid-area: mb1;
+  margin-top: 30px;
+}
+#main__bottom table {
+  width: 80%;
+  margin: auto;
+}
+
+#main__bottom td {
+  text-align: center;
+}
+#btn__write {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  width:100%;
+}
+
+#table1 button {
+  background-color: white;
+  border: 1px ridge var(--color-normal-green);
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  width:60px;
+  height:30px;
+}
+#table1 button:hover{
+transition:font-size 0.5s;
+font-size:1rem;
+}
+#writeBtn{
+border: 1px ridge var(--color-normal-green);
+background-color:white;
+border-radius:15px;
+width:280px;
+height:45px;
+}
+/*#btn__write {
+  border: none;
+  width: 150px;
+  height: 35px;
+  cursor: pointer;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  background-color: var(--color-normal-gray);
+}*/
+
+#btn__write button:hover {
+  font-size: 0.93rem;
+  transition: 0.5s;
+}
+#table1 {
+  border: 1px solid var(--color-normal-gray);
+}
+#table1 tbody tr:nth-of-type(1) {
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid var(--color-normal-gray);
+}
+#table1 tr > td {
+  height: 50px;
+  line-height: 50px;
+  margin: 20px 0;
+}
+
+
+
+@media screen and (max-width: 820px) {
+  #wrap__content {
+    width: 600px;
+  }
+  #main__title {
+    width: 560px;
+  }
+
+  #main__profile .fa-regular.fa-user {
+    font-size: 2.7rem;
+  }
+
+  #main__profile input {
+    font-size: 0.7rem;
+  }
+
+  #main__info {
+    display: grid;
+    grid-area: mb1;
+    margin-bottom: 30px;
+    justify-content: center;
+    text-align: center;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    position: relative;
+  }
+
+  #main__info span {
+    font-size: 0.9rem;
+  }
+
+/*#main__bottom button {
+    background-color: #79cd9c;
+    border: none;
+    border-radius: 10px;
+    height: 35px;
+    width: 150px;
+    font-size: 0.9rem;
+    transition: 0.5s;
+    font-weight: bold;
+  }
+  #main__bottom button:hover {
+    font-size: 1.05rem;
+    font-weight: bold;
+    transition: 0.5s;
+    cursor: pointer;
+  }*/
+}
+
+@media screen and (max-width: 400px) {
+  #wrap__content {
+    width: 380px;
+  }
+  #main__title {
+    width: 341px;
+    font-size: 1.1rem;
+  }
+
+  #main__profile .fa-regular.fa-user {
+    font-size: 2.5rem;
+  }
+
+  #main__profile input {
+    font-size: 0.6rem;
+  }
+
+  #main__info {
+    display: grid;
+    grid-area: mb1;
+    margin-bottom: 30px;
+    justify-content: center;
+    text-align: center;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    position: relative;
+  }
+
+  #main__info input[type="number"],
+  #main__info input[type="text"] {
+    height: 30px;
+    border-radius: 10px;
+    width: 220px;
+  }
+
+  #main__gender {
+    height: 40px;
+  }
+
+  #mypagebirth {
+    position: relative;
+    left: 25px;
+  }
+
+  #main__gender span {
+    position: relative;
+    left: 25px;
+  }
+
+  #main__gender .women {
+    position: relative;
+    top: -39px;
+    right: -120px;
+  }
+
+  #main__info span {
+    margin-right: 30px;
+    font-size: 0.8rem;
+  }
+
+  #text1 input,
+  #text2 input {
+    position: relative;
+    left: 13px;
+  }
+  #mypagebirth {
+    position: relative;
+    left: 23px;
+  }
+
+ #main__bottom button {
+    background-color: #79cd9c;
+    border: none;
+    border-radius: 10px;
+    height: 35px;
+    width: 90px;
+    font-size: 0.9rem;
+    transition: 0.5s;
+    font-weight: bold;
+    font-size: 0.8rem;
+  }
+
+  #main__bottom button:hover {
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+}

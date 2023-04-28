@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+          name="description"
+          content="서로에게 이득이 되는 아르바이트 구직정보 사이트 단디 알바"
+  />
+  <meta name="keywords" content="dandi" />
+  <meta name="author" content="4팀" />
+  <title>단디알바</title>
+  <link
+          rel="stylesheet"
+          href="../../static/fragmentCommon/common/common.css"
+          th:href="@{/fragmentCommon/common/common.css}"
+  />
+  <link
+          rel="stylesheet"
+          href="./resumedetail.css"
+          th:href="@{/resumeApply/applyDetail.css}"
+  />
+  <script
+          src="https://kit.fontawesome.com/72dc3cd256.js"
+          crossorigin="anonymous"
+  ></script>
+</head>
+<body>
+<div th:replace="~{/fragment/mainHeadLoginAfter :: mainHeaderAfter}"></div>
+<div
+        th:replace="~{/fragment/mainNavigationLoginAfter :: mainNavigationAfter}"
+></div>
+<!-- 메인: insert content -->
+<main id="wrap__main">
+  <div id="wrap__content">
+    <div id="main__title">
+      <h1>이력서 상세페이지</h1>
+    </div>
+    <div id="main__profile">
+      <div id="resume__title">
+        <span>이력서제목 : </span>
+        <span id="resumeTitle__text" th:text="${resumeApDetail.resumeTitle}">1</span>
+      </div>
+      <ul id="profile__picture">
+        <li>
+          <i class="fa-regular fa-user"></i>
+        </li>
+      </ul>
+    </div>
+    <div id="main__info">
+      <ul>
+        <li id="text1">
+          <span id="text1__name">이름</span>
+          <span id="text11__name" th:text="${applyPersonForm.namePerson}"></span>
+        </li>
+        <li id="main__gender">
+          <span id="info__gender">성별</span>
+          <span th:text="${applyPersonForm.genderPerson}"></span>
+        </li>
+        <li id="text2">
+          <span id="text2__birth">생년월일</span>
+          <span th:text="${applyPersonForm.birthPerson}"></span>
+        </li>
+        <li id="text3">
+          <span>주소</span>
+          <span id="text3__ad" th:text="${applyPersonForm.addressPerson}"></span>
+          <span th:text="${applyPersonForm.detailAddressPerson}"></span>
+        </li>
+        <li id="text4">
+          <span id="text4__email">이메일</span>
+          <span id="text44__email" th:text="${applyPersonForm.emailPerson}"></span>
+        </li>
+        <li id="text5">
+          <span id="text5__phone">전화번호</span>
+          <span id="text55__phone" th:text="${applyPersonForm.phonePerson}"></span>
+        </li>
+      </ul>
+    </div>
+
+    <div id="career"><p>경력사항</p></div>
+
+
+    <div id="resume__table">
+      <table id="add" border="1">
+        <thead>
+        <th>번호</th>
+        <th id="th2">회사</th>
+        <th id="th3">근무월수</th>
+        <th id="th4">근무명</th>
+        </thead>
+        <tbody>
+        <tr th:each="resumeItem :  ${resumeApDetail.resumeItems}">
+          <td th:text="${resumeItem.resumeItemId}"></td>
+          <td><span th:text="${resumeItem.businessName}"></span></td>
+          <td><span th:text="|${resumeItem.businessDate}개월|"></span></td>
+          <td><span th:text="${resumeItem.businessWork}"></span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="self__text"><p>자기소개서</p></div>
+    <div id="resume__textarea">
+          <textarea
+                  name=""
+                  id=""
+                  placeholder="자기소개를 입력하세요"
+                  th:text="${resumeApDetail.selfIntro}"
+                  readonly
+          ></textarea>
+    </div>
+
+  </div>
+</main>
+
+<!-- 푸터 -->
+<div th:replace="~{/fragment/mainFooter :: mainFooter}"></div>
+<!-- 공백 태그-->
+<div class="sp1"></div>
+<div class="sp2"></div>
+<div class="sp3"></div>
+<div class="sp4"></div>
+<div class="sp5"></div>
+<div class="sp6"></div>
+<div class="sp7"></div>
+<div class="sp8"></div>
+<div class="sp9"></div>
+<div class="sp10"></div>
+
+<script
+        type="module"
+        src="../../static/fragmentCommon/common/layout.js"
+        th:src="@{/fragmentCommon/common/layout.js}"
+></script>
+</body>
+</html>

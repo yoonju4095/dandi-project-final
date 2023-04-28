@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="서로에게 이득이 되는 아르바이트 구직정보 사이트 단디 알바"
+    />
+    <meta name="keywords" content="dandi" />
+    <meta name="author" content="4팀" />
+    <link
+      rel="stylesheet"
+      href="../../static/fragmentCommon/common/common.css"
+      th:href="@{/fragmentCommon/common/common.css}"
+    />
+    <link
+      rel="stylesheet"
+      href="./jobBoardInqiury.css"
+      th:href="@{/jobBoard/jobBoardInqiury.css}"
+    />
+    <link rel="stylesheet" th:href="@{/css/map.css}" />
+    <title>구인게시판-단디알바</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div
+        th:replace="~{/fragment/mainHeadLoginAfter :: mainHeaderAfter}"
+      ></div>
+      <div
+        th:replace="~{/fragment/mainNavigationLoginAfter :: mainNavigationAfter}"
+      ></div>
+      <!-- 메인: insert content -->
+      <form action="" th:object="${inquiryForm}">
+        <main id="main">
+          <!-- <div class="profiled"> -->
+          <!-- <div>사진</div> -->
+          <input
+            type="text"
+            th:field="*{jobBoardIdPk}"
+            style="display: none"
+            readonly
+          />
+          <!-- </div> -->
+          <div class="main__wrapper">
+            <div class="main__box">
+              <div>
+                <input type="text" th:field="*{titleJob}" readonly />
+              </div>
+              <input
+                type="text"
+                th:field="*{idJob}"
+                readonly
+                style="display: none"
+              />
+              <ul class="container1">
+                <!-- <li>등급</li>
+                <li>급여</li>
+                <li>출근날</li>
+                <li>출근시간</li>
+                <li>모집방법</li> -->
+              </ul>
+              <section class="content2">
+                <div>
+                  <div th:each="file : ${imagedFiles}" class="view__img">
+                    <th:block th:if="${#strings.contains(file.ftype,'image')}">
+                      <img th:src="@{|/attach/view/${file.uploadfileId}|}" />
+                    </th:block>
+                  </div>
+                </div>
+                <ul class="container2">
+                  <h2>모집조건</h2>
+                  <ul>
+                    <li>마감일</li>
+                    <li>
+                      <input type="text" th:field="*{closingDate}" readonly />
+                    </li>
+                    <li>인원</li>
+                    <li>
+                      <input
+                        type="text"
+                        maxlength="2"
+                        th:field="*{numberOfPersons}"
+                        readonly
+                      />
+                    </li>
+                    <li>성별</li>
+                    <li>
+                      <input type="text" th:field="*{genderJob}" readonly />
+                    </li>
+                    <li>학력</li>
+                    <li>
+                      <input
+                        type="text"
+                        th:field="*{academicAbility}"
+                        readonly
+                      />
+                    </li>
+                  </ul>
+                </ul>
+              </section>
+              <section class="content3">
+                <ul class="container3">
+                  <h2>근무조건</h2>
+                  <li>급여</li>
+                  <li>
+                    <input type="number" th:field="*{salaryAmount}" readonly />
+                    <input type="text" th:field="*{salaryWay}" readonly />
+                  </li>
+                  <li>근무기간</li>
+                  <li>
+                    <input type="text" th:field="*{workPeriod}" readonly />
+                  </li>
+                  <li>근무요일</li>
+                  <li>
+                    <input type="text" th:field="*{workDay}" readonly />
+                  </li>
+                  <li>근무시간</li>
+                  <li>
+                    <input type="text" th:field="*{comeInJob}" readonly />
+                    ~
+                    <input type="text" th:field="*{comeOutJob}" readonly />
+                  </li>
+                  <li>업직종</li>
+                  <li>
+                    <input type="text" th:field="*{workTypeJob}" readonly />
+                  </li>
+                  <li>고용형태</li>
+                  <li>
+                    <input type="text" th:field="*{employForm}" readonly />
+                  </li>
+                  <li>복리후생</li>
+                  <li>
+                    <input type="text" th:field="*{benefitJob}" readonly />
+                  </li>
+                </ul>
+              </section>
+              <section class="content4">
+                <ul class="container4">
+                  <h2>근무지 정보</h2>
+                  <li>근무지명</li>
+                  <li>
+                    <input type="text" th:field="*{placeName}" readonly />
+                  </li>
+                  <li>근무지 주소</li>
+                  <li>
+                    <input type="text" th:field="*{placeAddress}" readonly />
+                  </li>
+                  <li>
+                    <div id="map"></div>
+                  </li>
+                </ul>
+              </section>
+              <section class="content5">
+                <ul class="container5">
+                  <h2>상세 모집 요강</h2>
+                  <li>
+                    <textarea
+                      cols="50"
+                      rows="10"
+                      th:field="*{detailContent}"
+                      style="resize: none"
+                      readonly
+                    ></textarea>
+                  </li>
+                </ul>
+              </section>
+              <section class="content6">
+                <ul class="container6">
+                  <h2>채용 담당자</h2>
+                  <li>담당자</li>
+                  <li>
+                    <input type="text" th:field="*{managerName}" disabled />
+                  </li>
+                  <li>연락처</li>
+                  <li>
+                    <input type="text" th:field="*{managerPhone}" disabled />
+                  </li>
+                  <button type="submit">지원하기</button>
+                </ul>
+              </section>
+              <div class="btns">
+                <th:block
+                  th:if="${session.loginCompany?.idCompany} == ${inquiryForm.idJob}"
+                >
+                  <button type="button" class="modifyBtn">수정</button>
+                  <button type="button" class="delBtn">삭제</button>
+                </th:block>
+                <button
+                  type="button"
+                  class="modifyBtn"
+                  style="display: none"
+                ></button>
+                <button
+                  type="button"
+                  class="delBtn"
+                  style="display: none"
+                ></button>
+                <a th:href="@{/jobBoards}">목록</a>
+              </div>
+            </div>
+            <!-- 리뷰 목록 -->
+            <div th:replace="~{/review/jobReviewList :: reviewBox}"></div>
+          </div>
+        </main>
+      </form>
+
+
+      <!-- 지원하기 -->
+      <th:block th:if="${session.loginPerson?.personIdPk}">
+        <div id="resumeBtn__Box">
+          <button id="resumeBtn">
+            지원하기
+          </button>
+          <button id="modalCancel">취소</button>
+        </div>
+        <div id="resumeModalBox">
+          <div id="resumeModal">
+            <table border="1" id="jobTable">
+              <th>번호</th>
+              <th>이력서</th>
+              <th>보내기</th>
+              <tr th:each="resumeItem : ${resumeApplyLists}">
+                <td th:text="${resumeItemStat.count}">1</td>
+                <td>
+                  <a
+                          th:text="${resumeItem.resumeTitle}"
+                          th:href="@{|/resume/${session.loginPerson.idPerson}/resumeFormDetail/${resumeItem.resumeId}|}"
+                  ></a>
+                </td>
+                <td>
+                  <button id="resumeMove">
+                    <a
+                            href="" th:href="@{|/apply/${resumeItem.jobBoardIdPk}/${resumeItem.resumeId}|}">
+                      <!--                              th:href="@{|/resume/${session.loginPerson.idPerson}/resumeFormModify/${resumeItem.resumeId}|}"-->
+                      보내기</a
+                    >
+                  </button>
+
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </th:block>
+
+
+
+
+
+
+      <!-- 푸터 -->
+      <div th:replace="~{/fragment/mainFooter :: mainFooter}"></div>
+      <!-- 공백 태그-->
+      <div class="sp1"></div>
+      <div class="sp2"></div>
+      <div class="sp3"></div>
+      <div class="sp4"></div>
+      <div class="sp5"></div>
+      <div class="sp6"></div>
+      <div class="sp7"></div>
+      <div class="sp8"></div>
+      <div class="sp9"></div>
+      <div class="sp10"></div>
+    </div>
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2bc63660bbe47ed5d7b81a7ae80a6dd4&libraries=services"
+    ></script>
+    <script th:src="@{/js/map.js}"></script>
+    <script
+      type="module"
+      src="../../static/fragmentCommon/common/layout.js"
+      th:src="@{/fragmentCommon/common/layout.js}"
+    ></script>
+    <script>
+      const $modifyBtn = document.querySelector(".modifyBtn");
+      const $delBtn = document.querySelector(".delBtn");
+      const $id = document.getElementById("jobBoardIdPk");
+
+      const del_h = (e) => {
+        if (confirm("삭제하시겠습니까?")) {
+          globalThis.location.href = `/jobBoards/${$id.value}/deleteJobBoard`;
+        }
+      };
+      const modify_h = (e) => {
+        if (confirm("수정하시겠습니까?")) {
+          globalThis.location.href = `/jobBoards/${$id.value}/modify`;
+        }
+      };
+
+      $reviewBtn?.addEventListener("click", review_h);
+      $delBtn?.addEventListener("click", del_h);
+      $modifyBtn?.addEventListener("click", modify_h);
+    </script>
+  </body>
+</html>

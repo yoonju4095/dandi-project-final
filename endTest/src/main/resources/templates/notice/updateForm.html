@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="서로에게 이득이 되는 아르바이트 구직정보 사이트 단디 알바"
+    />
+    <meta name="keywords" content="dandi" />
+    <meta name="author" content="4팀" />
+    <title>공지 수정</title>
+    <link
+      rel="stylesheet"
+      href="../../static/fragmentCommon/common/common.css"
+      th:href="@{/fragmentCommon/common/common.css}"
+    />
+    <link
+      rel="stylesheet"
+      href="/css/noticeUpdate.css"
+      th:href="@{/css/noticeUpdate.css}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+  </head>
+  <!-- 카테고리 상자 숨기기 -->
+  <script
+    src="https://kit.fontawesome.com/881b9bf5d3.js"
+    crossorigin="anonymous"
+  ></script>
+  <body>
+    <div id="wrapper">
+      <div
+        th:replace="~{/fragment/mainHeadLoginAfter :: mainHeaderAfter}"
+      ></div>
+      <div
+        th:replace="~{/fragment/mainNavigationLoginAfter :: mainNavigationAfter}"
+      ></div>
+      <!-- 공지사항 수정-->
+      <div>
+        <main>
+          <form action="" method="post" th:object="${updateForm}">
+            <div class="noticeUpdate">
+              <div class="div_1">
+                <ul>
+                  <li><label class="title" for="title">제목</label></li>
+                  <li><label class="title" for="content">내용</label></li>
+                </ul>
+              </div>
+
+              <div class="div_2">
+                <ul>
+                  <li>
+                    <input
+                      type="text"
+                      id="title"
+                      th:field="*{title}"
+                      placeholder="제목을 입력해주세요"
+                      maxlength="20"
+                    />
+                  </li>
+                  <li id="content">
+                    <textarea
+                      name=""
+                      th:field="*{content}"
+                      placeholder="내용을 입력해주세요"
+                      rows="30"
+                    ></textarea>
+                  </li>
+                  <li>
+                    <input type="file" id="file" multiple />
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="div_3">
+              <ul>
+                <li>
+                  <button id="btnSave">저장</button>
+                  <button type="button" id="btnDelete">삭제</button>
+                  <button id="btnCancel">취소</button>
+                </li>
+              </ul>
+            </div>
+          </form>
+        </main>
+      </div>
+      <!-- 푸터 위쪽 -->
+      <div th:replace="~{/fragment/mainFooter :: mainFooter}"></div>
+
+      <div class="sp1"></div>
+      <div class="sp2"></div>
+      <div class="sp3"></div>
+      <div class="sp4"></div>
+      <div class="sp5"></div>
+      <div class="sp6"></div>
+      <div class="sp7"></div>
+      <div class="sp8"></div>
+      <div class="sp9"></div>
+      <div class="sp10"></div>
+    </div>
+    <script>
+      const $btnDelete = document.getElementById("btnDelete");
+
+      const btnDelete_h = (e) => {
+        if (confirm("삭제 하시겠습니까?")) {
+          // <!--      globalThis.location.href = `/products/${$productId.value}/del`;-->
+          return false;
+        }
+      };
+
+      $btnDelete.addEventListener("click", btnDelete_h, false);
+    </script>
+    <script
+      type="module"
+      src="../../static/fragmentCommon/common/layout.js"
+      th:src="@{/fragmentCommon/common/layout.js}"
+    ></script>
+  </body>
+</html>

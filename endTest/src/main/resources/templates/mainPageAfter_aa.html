@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인 후 페이지</title>
+  </head>
+  <body>
+    <h1>단디알바</h1>
+    <div>
+      <li>
+        <th:block th:if="${session.loginPerson?.personIdPk}">
+          <span
+            th:text="|(${session.loginPerson?.namePerson})님 어서와~|"
+          ></span>
+        </th:block>
+        <th:block th:if="${session.loginCompany?.companyIdPk}">
+          <span
+            th:text="|(${session.loginCompany?.nameCompany})사장님 어서와~|"
+          ></span>
+        </th:block>
+        <a href="" th:href="@{/logout}">로그아웃</a>
+        <a href="" th:href="@{/chatRoom}">채팅하기</a>
+      </li>
+    </div>
+    <hr />
+    <div>
+      <input
+        type="search"
+        class="textSearch"
+        th:value="${searchWords}"
+      /><button type="button" class="searchBtn">검색</button>
+    </div>
+    <ul>
+      <li><a href="" th:href="@{/jobBoards}">구인게시판</a></li>
+      <li>
+        <th:block th:if="${session.loginPerson?.personIdPk}">
+          <a
+            href=""
+            th:href="@{/rest/schedules/viewSchedule/{personId}(personId=${session.loginPerson?.idPerson})}"
+            >스케줄보기</a
+          >
+        </th:block>
+        <th:block th:if="${session.loginCompany?.companyIdPk}">
+          <a
+            href=""
+            th:href="@{/rest/schedules/managing/{id}(id=${session.loginCompany?.idCompany})}"
+            >스케줄보기</a
+          >
+        </th:block>
+      </li>
+      <li>
+        <th:block th:if="${session.loginPerson?.personIdPk}">
+          <a
+            href=""
+            th:href="@{/memberPersons/{id}/personInfo(id=${session.loginPerson?.personIdPk})}"
+            >마이페이지</a
+          >
+        </th:block>
+        <th:block th:if="${session.loginCompany?.companyIdPk}">
+          <a
+            href=""
+            th:href="@{/memberCompanies/{id}/companyInfo(id=${session.loginCompany?.companyIdPk})}"
+            >마이페이지</a
+          >
+        </th:block>
+      </li>
+      <li><a href="" th:href="@{/trouble}">고민게시판</a></li>
+      <li><a href="" th:href="@{/}">공지사항</a></li>
+    </ul>
+    <script>
+      const $textSearch = document.querySelector(".textSearch");
+      const $searchBtn = document.querySelector(".searchBtn");
+
+      const search_h = (e) => {
+        if (e.key === "Enter") {
+          if ($textSearch.value === "") {
+            alert("검색어를 입력해주세요.");
+          } else {
+            globalThis.location.href = `/searches/${$textSearch.value}`;
+            $textSearch.value = "";
+          }
+        }
+      };
+      $textSearch.addEventListener("keyup", search_h);
+      $searchBtn.addEventListener("click", (e) => {
+        if ($textSearch.value === "") {
+          alert("검색어를 입력해주세요.");
+          return;
+        } else {
+          globalThis.location.href = `/searches/${$textSearch.value}`;
+          $textSearch.value = "";
+        }
+      });
+    </script>
+  </body>
+</html>

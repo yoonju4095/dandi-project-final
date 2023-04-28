@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원 정보 수정-기업</title>
+  </head>
+  <body>
+    <h2>마이페이지</h2>
+    <div><a href="" th:href="@{/}">메인페이지</a></div>
+    <hr />
+    <form action="" th:method="post" th:object="${update}">
+      <div>
+        프로필 사진
+        <input type="image" />
+      </div>
+      <div>
+        <input
+          type="text"
+          th:field="*{companyIdPk}"
+          disabled
+          style="display: none"
+        />
+      </div>
+      <div>
+        이름<input
+          type="text"
+          name=""
+          id=""
+          placeholder="성명"
+          th:field="*{nameCompany}"
+          minlength="2"
+          maxlength="5"
+        />
+      </div>
+      <div>
+        사업자번호<input
+          type="text"
+          name=""
+          id=""
+          placeholder="사업자 번호 입력 10자('-'는 제외)"
+          maxlength="10"
+          th:field="*{businessCompany}"
+        />
+        <button type="button" class="chkBtn">인증</button>
+      </div>
+      <div>
+        주소<input
+          type="text"
+          name=""
+          id=""
+          placeholder="주소"
+          th:field="*{addressCompany}"
+        />
+      </div>
+      <div>
+        상세주소<input
+          type="text"
+          name=""
+          id=""
+          th:field="*{detailAddressCompany}"
+        />
+      </div>
+      <div>
+        이메일<input
+          type="email"
+          name=""
+          id=""
+          placeholder="이메일"
+          th:field="*{emailCompany}"
+        />
+      </div>
+      <div>
+        전화번호<input
+          type="tel"
+          name=""
+          id=""
+          maxlength="11"
+          th:field="*{phoneCompany}"
+        />
+      </div>
+      <div>
+        <button class="submitBtn">등록</button>
+        <button type="button" class="cancelBtn">취소</button>
+      </div>
+    </form>
+    <script>
+      const $updateBtn = document.querySelector('.submitBtn');
+      const $cancelBtn = document.querySelector('.cancelBtn');
+
+      const update_h = (e) => {
+        confirm('수정하시겠습니까?');
+      };
+      $updateBtn.addEventListener('click', update_h);
+
+      const cancel_h = (e) => {
+        history.back();
+      };
+      $cancelBtn.addEventListener('click', cancel_h);
+    </script>
+    <script type="module" th:src="@{/js/businessRegistrationInfo.js}"></script>
+  </body>
+</html>

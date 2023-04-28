@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="서로에게 이득이 되는 아르바이트 구직정보 사이트 단디 알바"
+    />
+    <meta name="keywords" content="dandi" />
+    <meta name="author" content="4팀" />
+    <title>단디알바</title>
+    <link
+      rel="stylesheet"
+      href="../../static/fragmentCommon/common/common.css"
+      th:href="@{/fragmentCommon/common/common.css}"
+    />
+    <link
+      rel="stylesheet"
+      href="./resumeFormBlank.css"
+      th:href="@{/resume/resumeFormBlank.css}"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/72dc3cd256.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div
+        th:replace="~{/fragment/mainHeadLoginAfter :: mainHeaderAfter}"
+      ></div>
+      <div
+        th:replace="~{/fragment/mainNavigationLoginAfter :: mainNavigationAfter}"
+      ></div>
+      <!-- 메인: insert content -->
+      <main id="wrap__main">
+        <div id="wrap__content">
+          <div id="main__title">
+            <h1>이력서 목록</h1>
+          </div>
+          <div id="main__top">
+            <ul>
+              <li>※이력서는 최대 3개까지 작성 가능합니다.</li>
+              <li>
+                ※이력서를 구인자에게 보낸 후에 이력서를 수정해도 보낸 이력서는
+                수정되지 않습니다.
+              </li>
+            </ul>
+          </div>
+
+          <div id="main__bottom">
+            <table id="table1" border="1">
+              <th>번호</th>
+              <th>이력서제목</th>
+              <th>작성일/수정일</th>
+              <th>수정/삭제</th>
+              <tr th:each="resumeItem : ${resumeLists}">
+                <td th:text="${resumeItemStat.count}">1</td>
+                <td>
+                  <a
+                    th:text="${resumeItem.resumeTitle}"
+                    th:href="@{|/resume/${session.loginPerson.idPerson}/resumeFormDetail/${resumeItem.resumeId}|}"
+                  ></a>
+                </td>
+
+                <td><span th:text="|${resumeItem.cDate}/${resumeItem.uDate}|"></span></td>
+
+                <td>
+                  <button type="button">
+                    <a
+                      href=""
+                      th:href="@{|/resume/${session.loginPerson.idPerson}/resumeFormModify/${resumeItem.resumeId}|}"
+                      >수정</a
+                    >
+                  </button>
+                  <button type="button">
+                    <a
+                      href=""
+                      th:href="@{|/resume/${session.loginPerson.idPerson}/${resumeItem.resumeId}/del|}"
+                      >삭제</a
+                    >
+                  </button>
+                </td>
+              </tr>
+            </table>
+            <div id="btn__write">
+              <button type="button" id="writeBtn">
+                <a
+                  href=""
+                  th:href="@{|/resume/${session.loginPerson.idPerson}/add|}"
+                  >이력서 작성</a
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- 푸터 -->
+      <div th:replace="~{/fragment/mainFooter :: mainFooter}"></div>
+      <!-- 공백 태그-->
+      <div class="sp1"></div>
+      <div class="sp2"></div>
+      <div class="sp3"></div>
+      <div class="sp4"></div>
+      <div class="sp5"></div>
+      <div class="sp6"></div>
+      <div class="sp7"></div>
+      <div class="sp8"></div>
+      <div class="sp9"></div>
+      <div class="sp10"></div>
+    </div>
+    <script
+      type="module"
+      src="../../static/fragmentCommon/common/layout.js"
+      th:src="@{/fragmentCommon/common/layout.js}"
+    ></script>
+  </body>
+</html>

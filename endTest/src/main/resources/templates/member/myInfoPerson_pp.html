@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마이페이지-개인</title>
+</head>
+<body>
+  <h2>마이페이지</h2>
+  <div><a href="" th:href="@{/}">메인페이지</a></div>
+  <hr>
+  <form action="" th:object="${infoPerson}">
+    <div>
+      프로필 사진
+      <input type="image">
+    </div>
+    <div>
+      <input type="text" th:field="*{personIdPk}" disabled style="display: none;">
+    </div>
+    <div>
+      이름<input type="text" name="" id="" placeholder="성명" th:field="*{namePerson}" minlength="2" maxlength="5" disabled>
+    </div>
+    <div>
+      생년월일<input type="text" name="" id="" placeholder="생년월일(6자)" maxlength="6" th:field="*{birthPerson}" disabled>
+    </div>
+    <div>
+      <label for="">성별</label></label><input type="text" th:field="*{genderPerson}" disabled>
+    </div>
+    <div>
+      주소<input type="text" name="" id="" placeholder="주소" th:field="*{addressPerson}" disabled>
+    </div>
+    <div>
+      상세주소<input type="text" name="" id="" th:field="*{detailAddressPerson}" disabled>
+    </div>
+    <div>
+      이메일<input type="email" name="" id="" placeholder="이메일" th:field="*{emailPerson}" disabled>
+    </div>
+    <div>
+      전화번호<input type="tel" name="" id="" maxlength="11" th:field="*{phonePerson}" disabled>
+    </div>
+    <div><a class="updateBtn" th:href="@{/memberPersons/{id}/modify(id=${session.loginPerson?.personIdPk})}">수정하기</a></div>
+  </form>
+  <script>
+    const $updateBtn = document.querySelector('.updateBtn');
+    const update_h = e => {
+      confirm('수정하시겠습니까?');
+    }
+    $updateBtn.addEventListener('click', update_h);
+  </script>
+</body>
+</html>

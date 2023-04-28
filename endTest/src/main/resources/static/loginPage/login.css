@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+#main .main__title a:nth-child(1) {
+  background-color: var(--color-normal-green);
+  font-weight: var(--header-subTitle-700);
+  border-top-left-radius: 10px;
+  /* border-right: 0.2rem solid var(--color-normal-deep-green); */
+}
+#main .main__title a:nth-child(1).active {
+  background-color: #eee;
+  border-bottom: 1px solid #eee;
+}
+#main .main__title a:nth-child(2) {
+  background-color: #eee;
+  border-bottom: 1px solid #eee;
+  font-weight: var(--header-subTitle-700);
+  border-top-right-radius: 10px;
+}
+#main .main__title a:nth-child(2).active {
+  background-color: var(--color-normal-green);
+}
+/* 개인회원 로그인 */
+
+#main .main__personMember input[type=text], #main .main__personMember input[type=password] {
+  padding-left: 10px;
+  font-size: 12pt;
+  border: 2.5px solid var(--color-normal-green);
+  box-shadow: 0.1rem 0.25rem 0.3rem rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+#main .main__personMember input[type=text]:focus, #main .main__personMember input[type=password]:focus {
+  outline: 2px solid var(--color-normal-deep-gray);
+}
+
+#main .main__personMember form button {
+  border: 2.5px solid var(--color-normal-green);
+  border-radius: 5px;
+  font-size: 12pt;
+  font-weight: var(--header-subTitle-700);
+  box-shadow: 0.1rem 0.25rem 0.3rem rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  cursor: pointer;
+}
+#main .main__personMember form button:active {
+  background-color: var(--color-normal-green);
+}
+
+/* 기업회원 로그인 */
+#main .main__companyMember input[type=text], #main .main__companyMember input[type=password] {
+  padding-left: 10px;
+  font-size: 12pt;
+  border: 2.5px solid var(--color-normal-green);
+  box-shadow: 0.1rem 0.25rem 0.3rem rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+#main .main__companyMember input[type=text]:focus, #main .main__companyMember input[type=password]:focus {
+  outline: 2px solid var(--color-normal-gray);
+}
+#main .main__companyMember form button {
+  border: 2.5px solid var(--color-normal-green);
+  background-color: #ffffff;
+  border-radius: 5px;
+  font-size: 12pt;
+  font-weight: var(--header-subTitle-700);
+  box-shadow: 0.1rem 0.25rem 0.3rem rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+#main .main__companyMember form button:active {
+  background-color: var(--color-normal-green);
+}

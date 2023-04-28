@@ -1,0 +1,137 @@
+.troubleAdd {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  margin-top: 110px;
+}
+
+.troubleAdd li {
+  padding: 5px;
+  border-bottom: 1px solid #dadada;
+}
+
+.troubleAdd .div_1 {
+  background-color: #f8f8f8;
+  font-weight: bold;
+}
+
+.troubleAdd .div_1 li {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  padding-left: 20px;
+  padding-right: 30px;
+  font-size: medium;
+}
+
+.troubleAdd .div_1 li:nth-last-of-type(1) {
+  border-bottom: none;
+}
+
+.troubleAdd .div_2 li {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  padding-left: 20px;
+  font-size: medium;
+}
+
+.troubleAdd .div_2 li input {
+  border: none;
+  height: 20px;
+}
+
+#won {
+  width: 65px;
+  padding-left: 10px;
+  text-align: center;
+}
+
+#wage,
+#hour,
+#month,
+#year {
+  width: 25px;
+}
+
+.troubleAdd .div_2 li label {
+  padding-right: 15px;
+}
+
+.troubleAdd .div_2 li textarea {
+  border: none;
+}
+
+.troubleAdd .div_2 li input:focus,
+.troubleAdd .div_2 li textarea:focus {
+  outline: none;
+}
+
+.troubleAdd .div_2 li select {
+  height: 25px;
+}
+
+.troubleAdd .div_1,
+.troubleAdd .div_2 {
+  border-top: 1px solid #dadada;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.view__img,
+.view__img img {
+  display: flex;
+  align-items: flex-start;
+  width: 700px;
+  height: 500px;
+}
+
+/* 제목 */
+#title {
+  width: 800px;
+}
+
+/* 내용 */
+#content {
+  display: flex;
+  width: 1000px;
+  height: 100%;
+  padding: 20px;
+}
+#content textarea {
+  width: 1000px;
+}
+
+/* 파일선택 */
+#file {
+  height: 25px;
+}
+
+#id {
+  display: none;
+}
+
+/* 등록, 취소 버튼 */
+.div_3 {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.div_3 button {
+  font-size: medium;
+  font-weight: bold;
+  padding: 5px;
+  width: 65px;
+  height: 35px;
+  cursor: pointer;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  background-color: #53bc89;
+}

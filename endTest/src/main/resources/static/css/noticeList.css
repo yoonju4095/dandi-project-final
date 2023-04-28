@@ -1,0 +1,149 @@
+.div_1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 50px 10px 50px;
+  margin-top: 110px;
+}
+
+#frm {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 5px 50px 0px 50px;
+}
+
+.notice {
+  width: 700px;
+  display: flex;
+  font-size: 35px;
+  justify-content: flex-start;
+}
+
+.search {
+  display: flex;
+  justify-content: flex-end;
+  font-weight: bold;
+}
+
+.search input,
+.search .searchBtn {
+  display: flex;
+  justify-content: center;
+  margin: 3px;
+}
+
+.search input{
+  border-radius: 5px;
+  border: 1px solid #4cbd86;
+  color: #4cbd86;
+}
+
+.search input::placeholder{
+  color: #4cbd86;
+}
+
+.search input:focus {
+  outline: none;
+}
+
+.search select:focus{
+  outline: none;
+}
+
+.search .searchBtn {
+  width: 55px;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #53bc89;
+  border: none;
+  color: white;
+}
+
+.noticeList {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 5px 50px 0px 50px;
+}
+
+table {
+  width: 1000px;
+  text-align: center;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+  border-left: none;
+  border-right: none;
+}
+
+td {
+  height: 17px;
+}
+
+th {
+  background-color: #53bc89;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+
+.add {
+  display: flex;
+  justify-content: center;
+  padding-left: 900px;
+  padding-bottom: 30px;
+}
+
+/* 글쓰기 버튼 */
+.add button {
+  font-weight: bold;
+  font-size: 14px;
+  padding: 5px;
+  width: 65px;
+  height: 35px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #53bc89;
+}
+
+
+.noticePage{
+  display: flex;
+  justify-content: flex-end;
+  justify-content: center;
+  padding: 25px;
+}
+
+.noticePage a{
+display:block;
+	margin:0 3px;
+	float:left;
+	border:1px solid #e6e6e6;
+	width:28px;
+	height:28px;
+	line-height:28px;
+	text-align:center;
+	background-color:#fff;
+	font-size:13px;
+	color:#999999;
+	text-decoration:none;
+}
+
+.noticePage a.active {
+	background-color:#53bc89;
+	color:#fff;
+	border:1px solid #53bc89;
+}
+
+.pageItem{
+  margin: 5px;
+}
+

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스케줄 보기-기업</title>
+    <link
+      rel="stylesheet"
+      href="./scheduleCompany.css"
+      th:href="@{/schedule/scheduleCompany.css}"
+    />
+    <link
+      rel="stylesheet"
+      href="../../static/fragmentCommon/common/common.css"
+      th:href="@{/fragmentCommon/common/common.css}"
+    />
+  </head>
+  <body>
+    <div id="wrapper">
+      <div
+        th:replace="~{/fragment/mainHeadLoginAfter :: mainHeaderAfter}"
+      ></div>
+      <div
+        th:replace="~{/fragment/mainNavigationLoginAfter :: mainNavigationAfter}"
+      ></div>
+      <main id="main">
+        <div class="main__scheduleTable">
+          <div class="title">구직자 스케줄</div>
+          <div class="main__tableHeader">
+            <div>no.ID</div>
+            <div>구직자</div>
+            <div>담당업무</div>
+            <div>요일</div>
+            <div>출퇴근 시간</div>
+            <div>고용기간</div>
+          </div>
+          <form action="">
+            <div class="main__tableBody"></div>
+          </form>
+          <div class="main__btn">
+            <button class="addBtn">신규 스케줄 생성</button>
+            <button class="manageBtn">스케줄 관리</button>
+          </div>
+        </div>
+        <!-- 모달 -->
+        <dialog class="inputPopup">
+          <div class="inputBox">
+            <h2 class="title_new">신규 스케줄</h2>
+            <h2 class="title_manage off">스케줄 관리</h2>
+            <form method="dialog" class="container">
+              <input
+                type="hidden"
+                id="myId"
+                th:value="${session.loginCompany?.idCompany}"
+              />
+              <div>
+                <input
+                  type="text"
+                  id="scheduleIdPk"
+                  placeholder="직원의 no.ID를 입력하세요"
+                  class="noId off"
+                />
+                <button type="button" class="inquiryBtn off">조회</button>
+              </div>
+              <div class="box_input">
+                <div>
+                  <!-- 구직자 프로필 사진: <input type="image" /> -->
+                  <input
+                    type="text"
+                    placeholder="구직자 이름"
+                    id="nameSchedule"
+                  />
+                  <input
+                    type="text"
+                    placeholder="구직자 아이디"
+                    id="idSchedule"
+                  />
+                </div>
+                <div>
+                  담당업무:
+                  <select id="workSchedule">
+                    <option value="서빙">서빙</option>
+                    <option value="주방장 및 조리사">주방장 및 조리사</option>
+                    <option value="주방보조">주방보조</option>
+                    <option value="바리스타">바리스타</option>
+                    <option value="제과제빵사">제과제빵사</option>
+                    <option value="바">바</option>
+                    <option value="매장관리 및 판매">매장관리 및 판매</option>
+                    <option value="사무보조">사무보조</option>
+                  </select>
+                </div>
+                <div class="dayChk">
+                  <!-- 요일:
+                  <select id="daySchedule" multiple>
+                    <option value="월">월</option>
+                    <option value="화">화</option>
+                    <option value="수">수</option>
+                    <option value="목">목</option>
+                    <option value="금">금</option>
+                    <option value="토">토</option>
+                    <option value="일">일</option>
+                  </select> -->
+                  요일: 월<input
+                    type="checkbox"
+                    value="월"
+                    id="daySchedule"
+                    name="chk"
+                  />
+                  화<input
+                    type="checkbox"
+                    value="화"
+                    id="daySchedule"
+                    name="chk"
+                  />
+                  수<input
+                    type="checkbox"
+                    value="수"
+                    id="daySchedule"
+                    name="chk"
+                  />
+                  목<input
+                    type="checkbox"
+                    value="목"
+                    id="daySchedule"
+                    name="chk"
+                  />
+                  금<input
+                    type="checkbox"
+                    value="금"
+                    id="daySchedule"
+                    name="chk"
+                  />
+                  토<input
+                    type="checkbox"
+                    value="토"
+                    id="daySchedule"
+                    name="chk"
+                  />
+                  일<input
+                    type="checkbox"
+                    value="일"
+                    id="daySchedule"
+                    name="chk"
+                  />
+                </div>
+                <div>
+                  출근: <input type="time" id="comeInSchedule" /> 퇴근:
+                  <input type="time" id="comeOutSchedule" />
+                </div>
+                <div>
+                  start: <input type="date" id="periodStart" /> end:
+                  <input type="date" id="periodEnd" />
+                </div>
+                <div>
+                  <button value="set" type="button" class="setBtn">등록</button>
+                  <button type="button" class="updateBtn">수정</button>
+                  <button type="button" class="delBtn">삭제</button>
+                  <button value="cancel">취소</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </dialog>
+      </main>
+      <div th:replace="~{/fragment/mainFooter :: mainFooter}"></div>
+    </div>
+    <!--  -->
+    <script
+      src="https://kit.fontawesome.com/881b9bf5d3.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" th:src="@{/schedule/ajax.js}"></script>
+    <script type="module" th:src="@{/schedule/scheduleCompany.js}"></script>
+    <script
+      type="module"
+      src="../../static/fragmentCommon/common/layout.js"
+      th:src="@{/fragmentCommon/common/layout.js}"
+    ></script>
+  </body>
+</html>

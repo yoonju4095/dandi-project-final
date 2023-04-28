@@ -1,0 +1,175 @@
+@charset "utf-8";
+
+#main {
+  grid-area: c;
+}
+#main .profile {
+  position: absolute;
+  display: inline-block;
+  top: 280px;
+  left: 700px;
+}
+#main .profile-inner {
+  background-color: var(--color-normal-gray);
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
+}
+#main .profile-inner .fa-regular.fa-user {
+  display: block;
+  font-size: 40px;
+  color: #777;
+  text-align: center;
+  line-height: 70px;
+  padding-bottom: 7px;
+}
+#main .profile-inner span {
+  display: block;
+  text-align: center;
+  color: #eee;
+}
+
+#main .container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 70px;
+  margin-top: 70px;
+}
+
+.calendar {
+  width: 45rem;
+  height: 52rem;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-color: var(--color-normal-gray);
+  color: #262626;
+  box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.5);
+}
+
+.month {
+  width: 100%;
+  height: 12rem;
+  background-color: var(--color-normal-deep-green);
+  color: #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.month i {
+  font-size: 2.5rem;
+  margin-left: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.month h2 {
+  font-size: 3rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.month p {
+  font-size: 1.6rem;
+}
+
+.weekdays {
+  width: 100%;
+  height: 5rem;
+  padding: 0 0.4rem;
+  display: flex;
+  align-items: center;
+}
+
+.weekdays div {
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  width: calc(44.2rem / 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.days {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.2rem;
+}
+
+.days div {
+  font-size: 1.4rem;
+  margin: 0.3rem;
+  width: calc(40.2rem / 7);
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+  transition: background-color 0.2s;
+  border-radius: 10%;
+}
+
+.days div:hover:not(.today) {
+  background-color: var(--color-normal-green);
+  border: 0.2rem solid #7777;
+  border-radius: 10%;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.prev-date,
+.next-date {
+  opacity: 0.5;
+}
+
+.today {
+  background-color: var(--color-normal-deep-green);
+  border: 0.2rem solid #7777;
+  box-sizing: border-box;
+}
+
+/* 모달창 스타일 */
+/* .days div:nth-of-type(26) {
+  background-color: var(--color-normal-green);
+  border: .2rem solid #7777;
+  box-sizing: border-box;
+} */
+#scheduleModalBox {
+  line-height: 180%;
+  width: 400px;
+  height: 500px;
+  border: 2px solid var(--color-normal-deep-gray);
+  border-radius: 5px;
+  overflow: hidden;
+}
+#scheduleModalBox::backdrop {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(3px);
+}
+#scheduleModalBox menu {
+  display: flex;
+  justify-content: end;
+}
+#scheduleModalBox menu button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-normal-green);
+  border-radius: 5px;
+  cursor: pointer;
+}
+#scheduleModalBox menu button i {
+  font-size: 14px;
+  text-align: center;
+  line-height: 20px;
+}

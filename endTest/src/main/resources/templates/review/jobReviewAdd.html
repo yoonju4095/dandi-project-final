@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="서로에게 이득이 되는 아르바이트 구직정보 사이트 단디 알바"
+    />
+    <meta name="keywords" content="dandi" />
+    <meta name="author" content="4팀" />
+    <link
+      rel="stylesheet"
+      href="../../static/fragmentCommon/common/common.css"
+      th:href="@{/fragmentCommon/common/common.css}"
+    />
+    <link
+      rel="stylesheet"
+      href="./review.css"
+      th:href="@{/review/review.css}"
+    />
+    <title>후기글-단디알바</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div
+        th:replace="~{/fragment/mainHeadLoginAfter :: mainHeaderAfter}"
+      ></div>
+      <div
+        th:replace="~{/fragment/mainNavigationLoginAfter :: mainNavigationAfter}"
+      ></div>
+      <!-- 메인: insert content -->
+      <form
+        action=""
+        th:method="post"
+        th:object="${saveReviewForm}"
+        enctype="multipart/form-data"
+      >
+        <main id="main">
+          <!-- <div class="profiled"> -->
+          <!-- <div>사진</div> -->
+
+          <!-- </div> -->
+          <div class="main__wrapper">
+            <div class="main__box">
+              <div>
+                <input
+                  type="text"
+                  placeholder="제목을 입력하세요."
+                  th:field="*{titleReview}"
+                />
+                <span th:errors="*{titleReview}"></span>
+              </div>
+              <input
+                type="text"
+                placeholder="본인 아이디 입력하시오."
+                th:field="*{idReview}"
+                style="display: none"
+              />
+              <input
+                type="text"
+                id="idPerson"
+                th:value="${session.loginPerson?.idPerson}"
+                style="display: none"
+              />
+              <input
+                type="number"
+                th:field="*{focusJobBoardId}"
+                style="display: none"
+                readonly
+              />
+
+              <section class="content2">
+                <!-- 사진 업로드 -->
+                <div>
+                  <!-- <div th:each="file : ${imagedFiles}" class="view__img">
+                    <th:block th:if="${#strings.contains(file.ftype,'image')}">
+                      <img th:src="@{|/attach/view/${file.uploadfileId}|}" />
+                    </th:block> -->
+                  <img id="preview" />
+                  <input type="file" th:field="*{imageFiles}" multiple />
+                  <!-- </div> -->
+                </div>
+                <ul class="container2">
+                  <textarea
+                    cols="50"
+                    rows="10"
+                    placeholder="내용을 입력하세요."
+                    th:field="*{contentReview}"
+                    style="resize: none"
+                  ></textarea>
+                </ul>
+              </section>
+              <div class="assessReview">
+                <span>평점:</span>
+                <input
+                  type="number"
+                  min="1"
+                  max="5"
+                  th:field="*{assessReview}"
+                />
+              </div>
+              <div class="btns">
+                <button type="submit">등록하기</button>
+                <a href="#" th:href="@{/jobBoards}">취소하기</a>
+              </div>
+            </div>
+          </div>
+        </main>
+      </form>
+      <!-- 푸터 -->
+      <div th:replace="~{/fragment/mainFooter :: mainFooter}"></div>
+      <!-- 공백 태그-->
+      <div class="sp1"></div>
+      <div class="sp2"></div>
+      <div class="sp3"></div>
+      <div class="sp4"></div>
+      <div class="sp5"></div>
+      <div class="sp6"></div>
+      <div class="sp7"></div>
+      <div class="sp8"></div>
+      <div class="sp9"></div>
+      <div class="sp10"></div>
+    </div>
+    <script>
+      const getUrl = document.location.pathname.split("/");
+      const $focusJobBoardId = document.getElementById("focusJobBoardId");
+      $focusJobBoardId.value = Number(getUrl[2]);
+      const $idReview = document.getElementById("idReview");
+      const $idPerson = document.getElementById("idPerson");
+      $idReview.value = $idPerson.value;
+    </script>
+    <script
+      type="module"
+      src="../../static/fragmentCommon/common/layout.js"
+      th:src="@{/fragmentCommon/common/layout.js}"
+    ></script>
+    <script type="module">
+      const $imageFiles = document.getElementById("imageFiles");
+      function readURL_h(input) {
+        if (input.files && input.files[0]) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const previewImage = document.getElementById("preview");
+            previewImage.src = e.target.result;
+          };
+          reader.readAsDataURL(input.files[0]);
+        } else {
+          document.getElementById("preview").src = "";
+        }
+      }
+      $imageFiles.addEventListener("change", (e) => {
+        readURL_h(e.target);
+      });
+    </script>
+  </body>
+</html>

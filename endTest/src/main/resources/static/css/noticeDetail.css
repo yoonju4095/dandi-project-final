@@ -1,0 +1,111 @@
+.noticeDetail {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding-top: 30px;
+}
+
+.noticeDetail li {
+  padding: 5px;
+  border-bottom: 1px solid #dadada;
+}
+
+.noticeDetail .div_1 {
+  background-color: #f8f8f8;
+  font-weight: bold;
+}
+
+.noticeDetail .div_1 li {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  padding-left: 20px;
+  padding-right: 30px;
+  font-size: medium;
+}
+
+.noticeDetail .div_1 li:nth-last-of-type(1) {
+  border-bottom: none;
+}
+
+.noticeDetail .div_2 li {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  padding-left: 20px;
+}
+
+.noticeDetail .div_1,
+.noticeDetail .div_2 {
+  border-top: 1px solid #dadada;
+}
+
+#id {
+  display: none;
+}
+
+
+#content{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.view__img,
+.view__img img{
+  display: flex;
+  align-items: flex-start;
+  width: 700px;
+  height: 500px;
+}
+
+
+/* 제목 */
+#title {
+  width: 800px;
+  border: none;
+  height: 20px;
+}
+
+/* 내용 */
+#content {
+  display: flex;
+  width: 1000px;
+  height: 100%;
+  /* padding: 20px; */
+}
+#content textarea {
+  width: 1000px;
+  border: none;
+}
+
+.noticeDetail .div_2 input:focus,
+.noticeDetail .div_2 textarea:focus{
+  outline: none;
+}
+
+/* 파일선택 */
+#file {
+  height: 25px;
+}
+
+/* 등록, 취소 버튼 */
+.div_3 {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.div_3 button {
+  font-size: medium;
+  font-weight: bold;
+  padding: 5px;
+  width: 65px;
+  height: 35px;
+  cursor: pointer;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  background-color: #53bc89;
+}

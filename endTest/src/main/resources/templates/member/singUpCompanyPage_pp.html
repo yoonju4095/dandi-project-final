@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입-기업</title>
+  </head>
+  <body>
+    <h2>기업 회원가입</h2>
+    <hr />
+    <form action="" method="post" th:object="${singUpCompany}">
+      <div>
+        <input
+          type="text"
+          name=""
+          id=""
+          placeholder="아이디"
+          th:field="*{idCompany}"
+        />
+        <span th:errors="*{idCompany}"></span>
+      </div>
+      <div>
+        <input
+          type="password"
+          name=""
+          id=""
+          placeholder="비밀번호"
+          th:field="*{pwCompany}"
+        />
+        <span th:errors="*{pwCompany}"></span>
+      </div>
+      <div>
+        <input
+          type="password"
+          name=""
+          id=""
+          placeholder="비밀번호 확인"
+          th:field="*{pwChkCompany}"
+        />
+        <span th:errors="*{pwChkCompany}"></span>
+      </div>
+      <div>
+        <input
+          type="text"
+          name=""
+          id=""
+          placeholder="성명"
+          th:field="*{nameCompany}"
+          minlength="2"
+          maxlength="5"
+        />
+        <span th:errors="*{nameCompany}"></span>
+      </div>
+      <div>
+        <input
+          type="text"
+          name=""
+          id=""
+          placeholder="사업자 번호 입력 10자('-'는 제외)"
+          maxlength="10"
+          th:field="*{businessCompany}"
+        />
+        <button type="button" class="chkBtn">인증</button>
+        <span th:errors="*{businessCompany}"></span>
+      </div>
+      <div>
+        <input
+          type="text"
+          name=""
+          id=""
+          placeholder="주소"
+          th:field="*{addressCompany}"
+        />
+        <span th:errors="*{addressCompany}"></span>
+      </div>
+      <div>
+        <input
+          type="text"
+          name=""
+          id=""
+          placeholder="상세주소"
+          th:field="*{detailAddressCompany}"
+        />
+        <span th:errors="*{detailAddressCompany}"></span>
+      </div>
+      <div>
+        <input
+          type="email"
+          name=""
+          id=""
+          placeholder="이메일"
+          th:field="*{emailCompany}"
+        />
+        <span th:errors="*{emailCompany}"></span>
+      </div>
+      <div>
+        <input
+          type="tel"
+          name=""
+          id=""
+          placeholder="전화번호('-'는 제외)"
+          maxlength="11"
+          th:field="*{phoneCompany}"
+        />
+        <span th:errors="*{phoneCompany}"></span>
+      </div>
+      <div><button class="submitBtn">가입하기</button></div>
+    </form>
+    <script type="module" th:src="@{/js/businessRegistrationInfo.js}"></script>
+  </body>
+</html>

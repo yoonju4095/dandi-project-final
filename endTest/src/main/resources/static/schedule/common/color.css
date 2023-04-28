@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+:root{
+  --color-normal-green: #79cd9c;
+  --color-normal-deep-green: #41B37C;
+  --color-normal-gray: #d8d8d8;
+  --color-normal-middle-gray: #a1a1a1;
+  --color-normal-deep-gray: #6e6e6e;
+  --color-pretty-gray1: #d4fc79;
+  --color-pretty-gray2: #96e6a1;
+}

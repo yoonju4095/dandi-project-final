@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="서로에게 이득이 되는 아르바이트 구직정보 사이트 단디 알바"
+    />
+    <meta name="keywords" content="dandi" />
+    <meta name="author" content="4팀" />
+    <title>단디알바</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div th:fragment="reviewBox">
+        <link
+          rel="stylesheet"
+          href="./reviewList.css"
+          th:href="@{/review/reviewList.css}"
+        />
+        <form action="" th:method="post">
+          <div class="main__review">
+            <div>
+              <th:block th:if="${session.loginPerson?.idPerson}">
+                <button type="button" class="reviewBtn">후기글 등록</button>
+              </th:block>
+              <button
+                type="button"
+                style="display: none"
+                class="reviewBtn"
+              ></button>
+            </div>
+            <h2>후기글</h2>
+            <section>
+              <div th:each="jobReview : ${jobReviews}">
+                <!-- <div class="personalProfiled">
+                  <li>사진</li>
+                </div> -->
+                <div class="userId" th:text="${jobReview.idReview}">
+                  구직자 아이디
+                </div>
+                <div class="textBox">
+                  <div class="textInner">
+                    <div>
+                      <a
+                        class="intoBtn"
+                        href=""
+                        th:href="@{/jobBoards/{id}/inquiry/{reviewId}/detail(id=${jobReview.focusJobBoardId}, reviewId=${jobReview.reviewIdPk})}"
+                        th:text="${jobReview.titleReview}"
+                        >타이틀</a
+                      >
+                    </div>
+                    <div th:text="${jobReview.contentReview}">후기글 본문</div>
+                  </div>
+                  <div>
+                    <span>평점:</span>
+                    <div
+                      class="grade"
+                      th:text="${jobReview.assessReview}"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </form>
+        <!-- 푸터 -->
+
+        <!-- 공백 태그-->
+        <div class="sp1"></div>
+        <div class="sp2"></div>
+        <div class="sp3"></div>
+        <div class="sp4"></div>
+        <div class="sp5"></div>
+        <div class="sp6"></div>
+        <div class="sp7"></div>
+        <div class="sp8"></div>
+        <div class="sp9"></div>
+        <div class="sp10"></div>
+        <script>
+          const $reviewBtn = document.querySelector(".reviewBtn");
+          const review_h = (e) => {
+            if (confirm("후기글을 등록하시겠습니까?")) {
+              globalThis.location.href = `/jobBoards/${$id.value}/inquiry/addJobReview`;
+            }
+          };
+          $reviewBtn.addEventListener("click", review_h);
+        </script>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>마이페이지-기업</title>
+  </head>
+  <body>
+    <h2>마이페이지</h2>
+    <div><a href="" th:href="@{/}">메인페이지</a></div>
+    <hr />
+    <form action="" th:object="${infoCompany}">
+      <div>
+        프로필 사진
+        <input type="image" />
+      </div>
+      <div>
+        <input
+          type="text"
+          th:field="*{companyIdPk}"
+          disabled
+          style="display: none"
+        />
+      </div>
+      <div>
+        이름<input
+          type="text"
+          name=""
+          id=""
+          placeholder="성명"
+          th:field="*{nameCompany}"
+          minlength="2"
+          maxlength="5"
+          disabled
+        />
+      </div>
+      <div>
+        사업자번호<input
+          type="text"
+          name=""
+          id=""
+          placeholder="사업자번호(10자)"
+          maxlength="10"
+          th:field="*{businessCompany}"
+          disabled
+        />
+      </div>
+      <div>
+        주소<input
+          type="text"
+          name=""
+          id=""
+          placeholder="주소"
+          th:field="*{addressCompany}"
+          disabled
+        />
+      </div>
+      <div>
+        상세주소<input
+          type="text"
+          name=""
+          id=""
+          placeholder="상세주소"
+          th:field="*{detailAddressCompany}"
+          disabled
+        />
+      </div>
+      <div>
+        이메일<input
+          type="email"
+          name=""
+          id=""
+          placeholder="이메일"
+          th:field="*{emailCompany}"
+          disabled
+        />
+      </div>
+      <div>
+        전화번호<input
+          type="tel"
+          name=""
+          id=""
+          maxlength="11"
+          th:field="*{phoneCompany}"
+          disabled
+        />
+      </div>
+      <div>
+        <a
+          class="updateBtn"
+          th:href="@{/memberCompanies/{id}/modify(id=${session.loginCompany?.companyIdPk})}"
+          >수정하기</a
+        >
+      </div>
+    </form>
+    <script>
+      const $updateBtn = document.querySelector('.updateBtn');
+      const update_h = (e) => {
+        confirm('수정하시겠습니까?');
+      };
+      $updateBtn.addEventListener('click', update_h);
+    </script>
+  </body>
+</html>
